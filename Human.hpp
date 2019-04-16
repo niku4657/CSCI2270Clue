@@ -15,7 +15,7 @@ class Human
     Human();
     //The human chooses from the menu options of Turn from player class.
     void AcceptTurn();
-    //Gotta boogey
+    //Gotta boogie
     void ChooseMove();
     //Cin all y'all accusations...
     void Suggest(bool final);
