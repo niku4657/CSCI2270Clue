@@ -7,9 +7,9 @@ using namespace std;
 
 class ClueCard{
     private:
-        HashTable weapon;
-        HashTable suspect;
-        HashTable building;
+        HashTable player1;
+        HashTable player2;
+        HashTable player3;
         HashTable envelope;
         HashTable allCards;
 
