@@ -107,7 +107,7 @@ Card* HashTable::searchItem(int key, string name)
     return 0;
 }
 
- void HashTable::showCard(string name){
-   // choose card to show card to show player
-   // insert card into player's hashtable
- }
+ // void HashTable::showCard(string name){
+ //   // choose card to show card to show player
+ //   // insert card into player's hashtable
+ // }

@@ -28,7 +28,7 @@ public:
 
     int getKey();
 
-    void showCard(int key, string name); // Person A's card inserted into Person B's
+    //void showCard(int key, string name); // Person A's card inserted into Person B's
 
     // inserts a key into hash table
     bool insertItem(int key, string name);
