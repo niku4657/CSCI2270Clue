@@ -58,7 +58,7 @@ HashTable::HashTable(int bsize)
 //function to calculate hash function
 unsigned int HashTable::hashFunction(int key)
 {
-    return (key % 2);
+    return (key / 6);
 }
 
 //function to insert
