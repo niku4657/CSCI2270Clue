@@ -4,11 +4,13 @@
 
 using namespace std;
 
-void ClueCard::addCardArray(Card cards[], int _key, string _name){
+void ClueCard::addCardArray(Card cards[], int _key, string _name)
+{
   cards[_key] = {_key, _name};
 }
 
-void ClueCard::fillInWeapons(){
+void ClueCard::fillInWeapons()
+{
   addCardArray(weapon, 0, "C4C Food");
   addCardArray(weapon, 1, "Ralphie's Horn");
   addCardArray(weapon, 2, "CSCI 2270 Midterm 2");
@@ -18,7 +20,8 @@ void ClueCard::fillInWeapons(){
 
 }
 
-void ClueCard::fillInSuspects(){
+void ClueCard::fillInSuspects()
+{
   addCardArray(suspect, 6, "Ralphie");
   addCardArray(suspect, 7, "Chip the Buffalo");
   addCardArray(suspect, 8, "Mr. Gold");
@@ -28,7 +31,8 @@ void ClueCard::fillInSuspects(){
 
 }
 
-void ClueCard::fillInRooms(){
+void ClueCard::fillInRooms()
+{
   addCardArray(room, 12, "C4C Food");
   addCardArray(room, 13, "Ralphie's Horn");
   addCardArray(room, 14, "CSCI 2270 Midterm 2");
@@ -38,13 +42,16 @@ void ClueCard::fillInRooms(){
 
 }
 
-void ClueCard::printArray(){
-    for (int i = 0; i < 6; i++){
+void ClueCard::printArray()
+{
+    for (int i = 0; i < 6; i++)
+    {
         cout << weapon[i].key << ":" << weapon[i].name << endl;
     }
 }
 
-void deleteElement(Card cards[], int key, int size){
+void deleteElement(Card cards[], int key, int size)
+{
   n = size;
   for (int i = 0; i < n; i++){
     if (cards[i].key == key){
@@ -56,14 +63,17 @@ void deleteElement(Card cards[], int key, int size){
   }
 }
 
-void shuffleArray(Card cards[]){
-  for (int i=0; i < 5; i++){
+void shuffleArray(Card cards[])
+{
+  for (int i=0; i < 5; i++)
+  {
     int r = i + (rand() % (5 - i))
     int temp = cards[i]; cards[i] = cards[r]; cards[r] = temp; // fisher-yates algorithm was the best to use
   }
 }
 
-void ClueCard::shuffleCards(){
+void ClueCard::shuffleCards()
+{
     srand(time(0));
     int w = rand() % 5;
     // use rand function to get random index from 0 -5
@@ -133,20 +143,20 @@ void ClueCard::distrubuteCards(){
 
 }
 
-// string ClueCard::getCardKey(){
-//
-// }
-//
-// string ClueCard::getCardName(){
-//
-// }
-
-string ClueCard::revealCard(){
-  // choose card to show card to show player
-  // insert card into player's hashtable
+void ClueCard::duplicateCard(int key, string name, Player p)
+{
+  p.aTable.insertItem(key, name);
 }
 
-int main(){
+void ClueCard::initializePlayersArray()
+{
+  players[0] = new Human;
+  players[1] = new Computer;
+  players[2] = new Computer;
+}
+
+int main()
+{
     ClueCard cards;
     cards.fillInWeapons();
     cards.printArray();

@@ -1,14 +1,14 @@
-#ifndef HUMAN_HPP
-#define HUMAN_HPP
+#ifndef COMPUTER_HPP
+#define COMPUTER_HPP
 #include <cstring>
 #include <iostream>
 #include <string>
 using namespace std;
 
-class Human : public Player
+class Computer : public Player
 {
   private:
-    HashTable *hTable;
+    HashTable *cTable
 
   public:
     //Choose from menu to roll, suggest, and make final accusation.
@@ -18,13 +18,14 @@ class Human : public Player
     //Print out Cards
     void printCards();
     //Suggest Function
-    void Suggest(int roll, HashTable h);
+    void Suggest(int roll);
     //Helper for Final Accuation
     bool checkEnvelope(string weapon, string suspect, string room);
     //Final Accusation
     void FinalAccusation(HashTable h);
-    //Reveal a Card
+
     string revealCard(string weapon, string suspect, string room);
+
 };
 
 #endif

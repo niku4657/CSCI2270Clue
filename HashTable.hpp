@@ -25,8 +25,6 @@ class HashTable
 public:
     HashTable();  // Constructor
 
-    //void convertKey(int key);
-
     int getKey();
 
     //void showCard(int key, string name); // Person A's card inserted into Person B's
@@ -39,7 +37,9 @@ public:
 
     void printTable();
 
-    Card* searchItem(string name, int key);
+    Card* searchItem(int key, string name);
+
+    Card* searchItem(int key);
 };
 
 #endif
