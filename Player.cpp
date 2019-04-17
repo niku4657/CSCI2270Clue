@@ -1,36 +1,55 @@
 #include <iostream>
 #include "Player.hpp"
-#include "Human.hpp"
-#include "Computer.hpp"
-
 using namespace std;
-
 
 Player::Player()
 {
-  //Empty.
+  //Leave empty.
 }
 
-void Player::Turn()
+int Player::ChooseTurn(HashTable h)
 {
-  cout << "Main Menu" << endl;
-  cout << "1. Roll" << endl;
-  cout << "2. Suggest" << endl;
-  cout << "3. Final Accusation" << endl;
-  cout << "4. Quit Turn" << endl;
+  //Leave empty.
 }
 
 int Player::Dice()
 {
-  int roll;
-  roll = rand() % 6 + 1;
-
-  cout << "You rolled a " << roll << endl;
-  return roll;
+	return random() % 6 + 1; //Random from 1 to 6 is returned.
 }
 
 void Player::printCards()
 {
-  cout << "YOUR CARDS" << endl;
-  aTable.printTable();
+  //Leave empty.
+}
+
+void Player::Suggest()
+{
+  //Leave empty.
+}
+
+bool Player::checkEnvelope(string weapon, string suspect, string room, HashTable h)
+{
+	Card *w = h.searchItem(0, weapon);
+	Card *s = h.searchItem(6, suspect);
+	Card *r = h.searchItem(12, room);
+
+	if(w == NULL || s == NULL || r == NULL)
+	{
+		return false;
+	}
+
+	if(w != NULL && s != NULL && r != NULL)
+	{
+		return true;
+	}
+}
+
+void Player::FinalAccusation()
+{
+  //Leave empty.
+}
+
+string Player::revealCard(string weapon, string suspect, string room)
+{
+	//Leave empty.
 }

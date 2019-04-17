@@ -1,25 +1,12 @@
 // CPP program to implement hashing with chaining
 #include<iostream>
 #include "HashTable.hpp"
-
-
 using namespace std;
 
-int HashTable::getKey(){
+int HashTable::getKey()
+{
   return key;
 }
-
-// string HashTable::convertKey(int key){
-//   if (key == 1){
-//     return "Suspect";
-//   }
-//   if (key == 3){
-//     return "Weapon";
-//   }
-//   if (key == 5){
-//     return "Room";
-//   }
-// }
 
 // function to display hash table
 void HashTable::printTable()
@@ -75,19 +62,21 @@ bool HashTable::insertItem(int key, string name)
 
         Card* temp = table[index];
 
-        if (temp == NULL){
-            table[index] = createCard(key, temp);
+        if (temp == NULL)
+        {
+            table[index] = createCard(key, temp, NULL);
             return true;
         }
-        while (temp->next != NULL){
+        while (temp->next != NULL)
+        {
             temp = temp->next;
         }
         temp->next = createCard(key, name, NULL);
         return true;
-
      }
-    else{
-        cout<<"duplicate entry: "<<key<<endl;
+    else
+    {
+        cout << "Duplicate Entry: " << key << endl;
         return false;
     }
 
@@ -102,16 +91,26 @@ Card* HashTable::searchItem(int key)
     // Search the list at that specific index and return the Card if found
     Card* temp = table[index];
 
-    while (temp != 0)
+    while (temp != NULL)
     {
-        if (temp->key == key) return temp;
-        temp = temp->next;
+        if (temp -> name == name) return temp;
+        temp = temp -> next;
     }
 
     return NULL;
 }
 
- // void HashTable::showCard(string name){
- //   // choose card to show card to show player
- //   // insert card into player's hashtable
- // }
+Card* HashTable::searchItem(int key)
+{
+    //Compute the index by using the hash function
+    int index = hashFunction(key);
+
+    // Search the list at that specific index and return the Card if found
+    Card* temp = table[index];
+
+    while (temp != NULL)
+    {
+        if (temp -> key == key) return temp;
+
+    return NULL;
+}

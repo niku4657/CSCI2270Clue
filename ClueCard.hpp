@@ -22,14 +22,10 @@ class ClueCard{
         void fillInSuspects();
         void fillInRooms();
         void shuffleCards();
-        //void combineCards();
-        void distrubuteCards(); // pass in player
-        // string getCardKey();
-        //void setCardType(string);
-        //string getCardName();
-        //void setCardName(string);
-        string revealCard();
+        void distributeCards();
         void printArray();
+        void initializePlayersArray();
+        void duplicateCard(int key, string name, Player p);
 };
 
 #endif

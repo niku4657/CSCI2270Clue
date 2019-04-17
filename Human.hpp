@@ -1,19 +1,16 @@
-#ifndef PLAYER_HPP
-#define PLAYER_HPP
+#ifndef HUMAN_HPP
+#define HUMAN_HPP
 #include <cstring>
 #include <iostream>
 #include <string>
-#include "HashTable.hpp"
 using namespace std;
 
-class Player
+class Human : public Player
 {
   private:
-    HashTable *aTable;
+    HashTable *hTable;
 
   public:
-    //Constructor
-    Player();
     //Choose from menu to roll, suggest, and make final accusation.
     int ChooseTurn(HashTable h);
     //Roll Function
@@ -21,7 +18,7 @@ class Player
     //Print out Cards
     void printCards();
     //Suggest Function
-    void Suggest(int roll);
+    void Suggest(int roll, HashTable h);
     //Helper for Final Accuation
     bool checkEnvelope(string weapon, string suspect, string room);
     //Final Accusation

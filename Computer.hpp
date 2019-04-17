@@ -3,22 +3,28 @@
 #include <cstring>
 #include <iostream>
 #include <string>
-#include "Player.hpp"
 using namespace std;
 
-class Computer
+class Computer : public Player
 {
   private:
     HashTable *cTable
 
   public:
-    Computer();
-    //The computer is going to randomly pick an option from Turn function.
-    void RandomTurn();
-    //Randomly suggest dummies.
-    void RandomSuggest(bool final);
-    //If ya meet a certain criteria, ye shall accuse.
-    void FinalAccusation();
+    //Choose from menu to roll, suggest, and make final accusation.
+    int ChooseTurn(HashTable h);
+    //Roll Function
+    int Dice();
+    //Print out Cards
+    void printCards();
+    //Suggest Function
+    void Suggest(int roll);
+    //Helper for Final Accuation
+    bool checkEnvelope(string weapon, string suspect, string room);
+    //Final Accusation
+    void FinalAccusation(HashTable h);
+
+    string revealCard(string weapon, string suspect, string room);
 
 };
 
