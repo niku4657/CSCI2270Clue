@@ -9,17 +9,17 @@ int HashTable::getKey(){
   return key;
 }
 
-string HashTable::convertKey(int key){
-  if (key == 1){
-    return "Suspect";
-  }
-  if (key == 3){
-    return "Weapon";
-  }
-  if (key == 5){
-    return "Room";
-  }
-}
+// string HashTable::convertKey(int key){
+//   if (key == 1){
+//     return "Suspect";
+//   }
+//   if (key == 3){
+//     return "Weapon";
+//   }
+//   if (key == 5){
+//     return "Room";
+//   }
+// }
 
 // function to display hash table
 void HashTable::printTable()
@@ -94,14 +94,14 @@ bool HashTable::insertItem(int key, string name)
 }
 
 //function to search
-Card* HashTable::searchItem(int key, string name)
+Card* HashTable::searchItem(int key)
 {
     //Compute the index by using the hash function
     int index = hashFunction(key);
 
     // Search the list at that specific index and return the Card if found
     Card* temp = table[index];
-
+  
     while (temp != NULL)
     {
         if (temp -> name == name) return temp;
@@ -122,8 +122,6 @@ Card* HashTable::searchItem(int key)
     while (temp != NULL)
     {
         if (temp -> key == key) return temp;
-        temp = temp->next;
-    }
 
     return NULL;
 }

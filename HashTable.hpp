@@ -11,6 +11,7 @@ struct Card
     int key;
     string name;
     struct Card* next;
+
 };
 
 class HashTable
@@ -24,7 +25,7 @@ class HashTable
 public:
     HashTable(int bsize);  // Constructor
 
-    void convertKey(int key);
+    // void convertKey(int key);
 
     int getKey();
 
