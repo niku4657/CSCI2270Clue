@@ -115,7 +115,7 @@ void ClueCard::mergeArrays(){
 
 }
 
-void ClueCard::distrubuteCards(){
+void ClueCard::distributeCards(){
   // distrubute Cards from array of cards to individual player hash tables
   // merge arrays into one array
   mergeArrays();
@@ -128,13 +128,13 @@ void ClueCard::distrubuteCards(){
     // card = weapon[i];
     //insertItem(card->key, card->name)
   }
-  for (int i = 0; i < 15; i + 3){
+  for (int i = 1; i < 15; i + 3){
     // create pointer and add pointer to card at index to hash table
     // pointer is card struct: Card* card = new Card;
     // card = weapon[i];
     //insertItem(card->key, card->name)
   }
-  for (int i = 0; i < 15; i + 3){
+  for (int i = 2; i < 15; i + 3){
     // create pointer and add pointer to card at index to hash table
     // pointer is card struct: Card* card = new Card;
     // card = weapon[i];
