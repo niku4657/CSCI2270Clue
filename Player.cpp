@@ -27,6 +27,11 @@ void Player::Suggest()
   //Leave empty.
 }
 
+bool Player::checkEnvelope()
+{
+  //Leave empty.
+}
+
 void Player::FinalAccusation()
 {
   //Leave empty.

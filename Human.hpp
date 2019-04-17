@@ -11,8 +11,6 @@ class Human : public Player
     HashTable *hTable;
 
   public:
-    //Constructor
-    Human();
     //Choose from menu to roll, suggest, and make final accusation.
     void ChooseTurn();
     //Roll Function
@@ -20,9 +18,11 @@ class Human : public Player
     //Print out Cards
     void printCards();
     //Suggest Function
-    void Suggest();
+    void Suggest(int roll);
+    //Helper for Final Accuation
+    bool checkEnvelope(string weapon, string suspect, string room);
     //Final Accusation
-    void FinalAccusation();
+    void FinalAccusation(HashTable h);
 };
 
 #endif

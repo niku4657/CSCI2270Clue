@@ -38,7 +38,9 @@ public:
 
     void printTable();
 
-    Card* searchItem(string name, int key);
+    Card* searchItem(int key, string name);
+
+    Card* searchItem(int key);
 };
 
 #endif

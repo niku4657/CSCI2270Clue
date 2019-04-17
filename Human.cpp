@@ -1,3 +1,106 @@
 #include <iostream>
 #include "Human.hpp"
 using namespace std;
+
+void Human::ChooseTurn()
+{
+  //Leave empty.
+}
+
+void Human::printCards()
+{
+  cout << "YOUR CARDS" << endl;
+  hTable.printTable();
+}
+
+void Human::Suggest(int roll)
+{
+  string room;
+  string suspect;
+  string weapon;
+
+  if (roll == 1 || roll == 3 || roll == 5)
+  {
+    cout << "You can enter a room, choose from the following:"
+    cout << "UMC" << endl;
+    cout << "Farrand Field" << endl;
+    cout << "CSEL" << endl;
+    cout << "Kittredge Central" << endl;
+    cout << "Folsom Field" << endl;
+    cout << "C4C" << endl;
+    getline(cin, room);
+
+    cout << "You have made it into the " << room << endl;
+    cout << "You can now make a suggestion of who you think committed the murder" << endl;
+
+    cout << "Your Suggestion:" << endl;
+    cout << "Room: " << room << endl;
+
+    cout << "Suspect";
+    getline(cin, suspect);
+    cout << endl;
+
+    cout << "Weapon";
+    getline(cin, weapon);
+    cout << endl;
+
+    //CHECK OTHER PLAYER'S CARDS???
+  }
+  else
+  {
+    cout << "You can't enter a room, it is now the computer's turn.";
+    cout << endl;
+    return;
+  }
+}
+
+bool Human::checkEnvelope(string weapon, string suspect, string room, HashTable h)
+{
+  Card *w = h.searchItem(0, weapon);
+  Card *s = h.searchItem(6, suspect);
+  Card *r = h.searchItem(12, room);
+
+  if(w == NULL || s == NULL || r == NULL)
+  {
+    return false;
+  }
+
+  if(w != NULL && s != NULL && r != NULL)
+  {
+    return true;
+  }
+}
+
+void Human::FinalAccusation(HashTable h)
+{
+  string room;
+  string suspect;
+  string weapon;
+
+  cout << "Your Final Accusation:" << endl;
+
+  cout << "Weapon";
+  getline(cin, weapon);
+  cout << endl;
+
+  cout << "Suspect";
+  getline(cin, suspect);
+  cout << endl;
+
+  cout << "Room:"
+  getline(cin, room);
+  cout << endl;
+
+  if(cc.checkEnvelope(weapon, suspect, room, h))
+  {
+    cout << "Congratulations you won the game!!!!" << endl;
+  }
+  else
+  {
+    cout << "You lost the game..." << endl;
+  }
+
+  cout << "The correct answer is:" << endl;
+  h.printTable();
+  return;
+}
