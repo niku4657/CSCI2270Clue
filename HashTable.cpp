@@ -101,12 +101,27 @@ Card* HashTable::searchItem(int key)
 
     // Search the list at that specific index and return the Card if found
     Card* temp = table[index];
-
-    while (temp != 0)
+  
+    while (temp != NULL)
     {
-        if (temp->key == key) return temp;
-        temp = temp->next;
+        if (temp -> name == name) return temp;
+        temp = temp -> next;
     }
+
+    return NULL;
+}
+
+Card* HashTable::searchItem(int key)
+{
+    //Compute the index by using the hash function
+    int index = hashFunction(key);
+
+    // Search the list at that specific index and return the Card if found
+    Card* temp = table[index];
+
+    while (temp != NULL)
+    {
+        if (temp -> key == key) return temp;
 
     return NULL;
 }
