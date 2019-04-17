@@ -11,7 +11,7 @@ class ClueCard{
         Card weapon[6];
         Card suspect[6];
         Card room[6];
-        //HashTable envelope(3);
+        HashTable envelope(3);
         //HashTable allCards;
 
     public:
@@ -22,7 +22,7 @@ class ClueCard{
         void shuffleCards();
         void combineCards();
         void distrubuteCards();
-        string getCardType();
+        string getCardKey();
         //void setCardType(string);
         string getCardName();
         //void setCardName(string);

@@ -45,10 +45,12 @@ void ClueCard::printArray(){
 }
 
 void ClueCard::shuffleCards(){
-
-  // traverse through main hash table
-  // add each element to a new array containing all cards
-  // shuffle cards in array
+    srand(time(0));
+    int r = rand() % 5;
+    // use rand function to get random index from 0 -5
+    envelope.insertItem()
+    // add card to envelope: envelope.insertItem(cards[i].getKey, cards[i])
+    // delete card at index from array
 
   // srand(time(0))
   // n = size of array
@@ -67,7 +69,7 @@ void ClueCard::distrubuteCards(){
   // distrubute Cards from array of cards to individual player hash tables
 }
 
-string ClueCard::getCardType(){
+string ClueCard::getCardKey(){
 
 }
 
@@ -80,8 +82,8 @@ string ClueCard::revealCard(){
   // insert card into player's hashtable
 }
 
-// int main(){
+int main(){
 //     ClueCard cards;
 //     cards.fillInWeapons();
 //     cards.printArray();
-// }
+}
