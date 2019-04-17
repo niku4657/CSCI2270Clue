@@ -5,6 +5,8 @@ using namespace std;
 int Human::ChooseTurn(HashTable h)
 {
   string option;
+  int roll = Dice();
+  cout << "You rolled a " << roll << endl;
   cout << "Main Menu" << endl;
   cout << "1. Suggest" << endl;
   cout << "2. Final Accusation" << endl;
@@ -16,11 +18,13 @@ int Human::ChooseTurn(HashTable h)
 
   if (option == 1)
   {
-    Suggest();
+    Suggest(roll, h);
+    return 1;
   }
   else if (option == 2)
   {
     FinalAccusation(h);
+    return 2;
   }
   else if (option == 3)
   {
@@ -42,7 +46,7 @@ void Human::printCards()
   hTable.printTable();
 }
 
-void Human::Suggest(int roll)
+void Human::Suggest(int roll, HashTable h)
 {
   string room;
   string suspect;
