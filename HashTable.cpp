@@ -9,17 +9,17 @@ int HashTable::getKey(){
   return key;
 }
 
-string HashTable::convertKey(int key){
-  if (key == 1){
-    return "Suspect";
-  }
-  if (key == 3){
-    return "Weapon";
-  }
-  if (key == 5){
-    return "Room";
-  }
-}
+// string HashTable::convertKey(int key){
+//   if (key == 1){
+//     return "Suspect";
+//   }
+//   if (key == 3){
+//     return "Weapon";
+//   }
+//   if (key == 5){
+//     return "Room";
+//   }
+// }
 
 // function to display hash table
 void HashTable::printTable()

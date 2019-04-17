@@ -89,8 +89,17 @@ void ClueCard::shuffleCards(){
 //
 // }
 
-void ClueCard::distrubuteCards(Player arr[]){
+void ClueCard::distrubuteCards(){
   // distrubute Cards from array of cards to individual player hash tables
+  // merge arrays into one array
+  // create 3 for loops
+  for (int i = 0; i < 15; i + 3){
+    // create pointer and add pointer to card at index to hash table
+    // pointer is card struct: Card* card = new Card;
+    // card = weapon[i];
+    //insertItem(card->key, card->name)
+  }
+
 }
 
 // string ClueCard::getCardKey(){
