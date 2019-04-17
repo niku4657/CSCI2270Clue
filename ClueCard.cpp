@@ -32,7 +32,8 @@ string ClueCard::getCardName(){
 
 }
 
-string ClueCard::revealCard(){
+string ClueCard::revealCard()
+{
   // choose card to show card to show player
   // insert card into player's hashtable
 }

@@ -8,9 +8,6 @@ using namespace std;
 
 class ClueCard{
     private:
-        HashTable weapon;
-        HashTable suspect;
-        HashTable building;
         HashTable envelope;
         HashTable allCards;
 
@@ -19,9 +16,7 @@ class ClueCard{
         void combineCards();
         void distrubuteCards();
         string getCardType();
-        //void setCardType(string);
         string getCardName();
-        //void setCardName(string);
         string revealCard();
 }
 
