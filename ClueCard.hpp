@@ -12,7 +12,6 @@ class ClueCard{
         Card suspect[6];
         Card room[6];
         HashTable envelope(3);
-        //HashTable allCards;
         Player players[3];
 
     public:
@@ -21,14 +20,10 @@ class ClueCard{
         void fillInSuspects();
         void fillInRooms();
         void shuffleCards();
-        //void combineCards();
-        void distrubuteCards(); // pass in player
-        // string getCardKey();
-        //void setCardType(string);
-        //string getCardName();
-        //void setCardName(string);
-        string revealCard();
+        void distrubuteCards();
         void printArray();
+        void initializeGame();
+        void duplicateCard();
 };
 
 #endif

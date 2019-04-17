@@ -48,3 +48,8 @@ void Player::FinalAccusation()
 {
   //Leave empty.
 }
+
+string Player::revealCard(string weapon, string suspect, string room)
+{
+	//Leave empty.
+}
