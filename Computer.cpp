@@ -129,15 +129,21 @@ void Computer::RandomSuggest(bool final){
   }
   else
   {
-    //switch turn function
+    //switch turn function - main?
   }
 }
 
 void Computer::FinalAccusation(){
   //After dice roll
   //one choice to get the envelope cards correct
+  RandomSuggest(); //Basically make a Suggestion
 
+  //search envelope hash table
 
+  //if all cards are found
+  cout << "Congratulations! You successfully uncovered the details of the murder!" << endl;
 
+  //if none are found or at least one doesn't match
+  cout << "Sorry! You didn't accurately solve the murder mystery." << endl;
 
 }
