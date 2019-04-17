@@ -8,9 +8,7 @@ using namespace std;
 class Player
 {
   private:
-    HashTable *Player1;
-    HashTable *Player2;
-    HashTable *Player3;
+    HashTable *aPlayer;
 
   public:
     Player();
