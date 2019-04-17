@@ -11,6 +11,7 @@ struct Card
     int key;
     string name;
     struct Card* next;
+    
 };
 
 class HashTable
