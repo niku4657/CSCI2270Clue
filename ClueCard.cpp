@@ -108,9 +108,9 @@ void ClueCard::distrubuteCards()
 
 }
 
-void ClueCard::duplicateCard()
+void ClueCard::duplicateCard(int key, string name, Player p)
 {
-
+  p.aTable.insertItem(key, name);
 }
 
 void ClueCard::initializeGame()
