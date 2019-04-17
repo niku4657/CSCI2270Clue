@@ -154,181 +154,39 @@ void Computer::FinalAccusation(HashTable h){
   return;
 }
 
-string Computer::revealCard(string weapon, string suspect, string room){
-  int randReveal;
-  Card *w = cTable.searchItem(0, weapon);
-	Card *s = cTable.searchItem(6, suspect);
-	Card *r = cTable.searchItem(12, room);
+string Computer::revealCard(string weapon, string suspect, string room, HashTable h)
+{
+  Card *w = h.searchItem(0, weapon);
+  Card *s = h.searchItem(6, suspect);
+  Card *r = h.searchItem(12, room);
+  string card = "";
 
 	if(w == NULL && s == NULL && r == NULL)
 	{
-    cout << "The computer has no cards that dispute the suggestion" << endl;
-    return "";
+		cout << "You have no cards to dispute that suggestion." << endl;
 	}
 
 	if(w != NULL || s != NULL || r != NULL)
 	{
-    if (w != NULL)
+		cout << "Please choose a card to dispute the suggestion:" << endl;
+
+    if(w != NULL)
     {
-      if(s != NULL && r != NULL)
-      {
-        //Case of computer having all cards.
-        randReveal = rand() % 3 + 1; //computer is choosing a card to reveal at random
-
-        if (randReveal == 1)
-        {
-          return w->name;
-        }
-        else if (randReveal == 2)
-        {
-          return s->name;
-        }
-        else if (randReveal == 3)
-        {
-          return r->name;
-        }
-      }
-      else if(s != NULL && r == NULL)
-      {
-        //Case of computer having two cards.
-        randReveal = rand() % 2 + 1;
-
-        if (randReveal == 1)
-        {
-          return w->name;
-        }
-        else if (randReveal == 2)
-        {
-          return s->name;
-        }
-      }
-      else if(s == NULL && r != NULL)
-      {
-        //Case of computer having two cards.
-        randReveal = rand() % 2 + 1;
-
-        if (randReveal == 1)
-        {
-          return w->name;
-        }
-        else if (randReveal == 2)
-        {
-          return r->name;
-        }
-      }
-      else
-      {
-        //Case of computer having one card.
-        return w -> name;
-      }
+      cout << w -> name << endl;
     }
-    if (s != NULL)
+
+    if(s != NULL)
     {
-      if(w != NULL && r != NULL)
-      {
-        //Case of computer having all cards.
-        randReveal = rand() % 3 + 1; //computer is choosing a card to reveal at random
-
-        if (randReveal == 1)
-        {
-          return s->name;
-        }
-        else if (randReveal == 2)
-        {
-          return w->name;
-        }
-        else if (randReveal == 3)
-        {
-          return r->name;
-        }
-      }
-      else if(w != NULL && r == NULL)
-      {
-        //Case of computer having two cards.
-        randReveal = rand() % 2 + 1;
-
-        if (randReveal == 1)
-        {
-          return s->name;
-        }
-        else if (randReveal == 2)
-        {
-          return w->name;
-        }
-      }
-      else if(w == NULL && r != NULL)
-      {
-        //Case of computer having two cards.
-        randReveal = rand() % 2 + 1;
-
-        if (randReveal == 1)
-        {
-          return s->name;
-        }
-        else if (randReveal == 2)
-        {
-          return r->name;
-        }
-      }
-      else
-      {
-        //Case of computer having one card.
-        return s -> name;
-      }
+      cout << s -> name << endl;
     }
-    if (r != NULL)
+
+    if(r != NULL)
     {
-      if(w != NULL && s != NULL)
-      {
-        //Case of computer having all cards.
-        randReveal = rand() % 3 + 1; //computer is choosing a card to reveal at random
-
-        if (randReveal == 1)
-        {
-          return r->name;
-        }
-        else if (randReveal == 2)
-        {
-          return w->name;
-        }
-        else if (randReveal == 3)
-        {
-          return s->name;
-        }
-      }
-      else if(w != NULL && s == NULL)
-      {
-        //Case of computer having two cards.
-        randReveal = rand() % 2 + 1;
-
-        if (randReveal == 1)
-        {
-          return r->name;
-        }
-        else if (randReveal == 2)
-        {
-          return w->name;
-        }
-      }
-      else if(w == NULL && s != NULL)
-      {
-        //Case of computer having two cards.
-        randReveal = rand() % 2 + 1;
-
-        if (randReveal == 1)
-        {
-          return r->name;
-        }
-        else if (randReveal == 2)
-        {
-          return s->name;
-        }
-      }
-      else
-      {
-        //Case of computer having one card.
-        return r -> name;
-      }
+      cout << r -> name << endl;
     }
+
+    getline(cin, card);
 	}
+
+  return card;
 }

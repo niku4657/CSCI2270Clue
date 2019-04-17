@@ -23,8 +23,8 @@ class Computer : public Player
     bool checkEnvelope(string weapon, string suspect, string room);
     //Final Accusation
     void FinalAccusation(HashTable h);
-
-    string revealCard(string weapon, string suspect, string room);
+    //Reveal a Card
+    string revealCard(string weapon, string suspect, string room, HashTable h);
 
 };
 
