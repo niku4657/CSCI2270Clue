@@ -29,8 +29,11 @@ void HashTable::printTable()
 
         Card* temp;
         temp = table[i];
-        while (temp != NULL){
-            cout << temp->key<< " " ;
+        while (temp != NULL)
+        {
+            cout << "CARD" << endl;
+            cout << convertKey(temp -> key) << endl;
+            cout << temp -> name << endl;
             temp = temp->next;
         }
         cout << endl;

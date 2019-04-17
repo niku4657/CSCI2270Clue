@@ -16,6 +16,8 @@ class Player
     void Turn();
     //Roll Function
     int Dice();
+    //Print out Cards
+    void printCards();
 
 };
 
