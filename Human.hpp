@@ -18,7 +18,7 @@ class Human : public Player
     //Print out Cards
     void printCards();
     //Suggest Function
-    void Suggest(int roll);
+    void Suggest(int roll, HashTable h);
     //Helper for Final Accuation
     bool checkEnvelope(string weapon, string suspect, string room);
     //Final Accusation
