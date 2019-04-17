@@ -113,9 +113,11 @@ void ClueCard::duplicateCard(int key, string name, Player p)
   p.aTable.insertItem(key, name);
 }
 
-void ClueCard::initializeGame()
+void ClueCard::initializePlayersArray()
 {
-
+  players[0] = new Human;
+  players[1] = new Computer;
+  players[2] = new Computer;
 }
 
 int main()

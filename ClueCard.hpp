@@ -22,7 +22,7 @@ class ClueCard{
         void shuffleCards();
         void distrubuteCards();
         void printArray();
-        void initializeGame();
+        void initializePlayersArray();
         void duplicateCard(int key, string name, Player p);
 };
 
