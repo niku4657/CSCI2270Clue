@@ -136,7 +136,6 @@ void Computer::RandomSuggest(bool final){
 void Computer::FinalAccusation(){
   //After dice roll
   //one choice to get the envelope cards correct
-
   RandomSuggest(); //Basically make a Suggestion
 
   //search envelope hash table

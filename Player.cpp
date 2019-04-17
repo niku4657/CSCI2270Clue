@@ -23,7 +23,7 @@ void Player::Turn()
 int Player::Dice()
 {
   int roll;
-  roll = rand() % 7;
+  roll = rand() % 6 + 1;
 
   cout << "You rolled a " << roll << endl;
   return roll;
