@@ -23,20 +23,30 @@ int main()
   cc.distrubuteCards();
 
   //Game Start
-  cout <<"HEYYYYYYYYYYYYYYYYYYYYYYY" << endl;
+  cout << "Game Intro" << endl;
 
   while(isRunning)
   {
     humanTurnOut = cc.players[0].ChooseTurn(players[1].aTable);
 
-    if(humanTurnOut == 1 || humanTurnOut == 3)
+    if(humanTurnOut == 1)
     {
       //Suggestion
       computerTurnOut = cc.players[1].ChooseTurn(players[0].aTable);
     }
+    else if(humanTurnOut == 2)
+    {
+      //Final Accusation
+      isRunning = false;
+    }
+    else if(humanTurnOut == 3)
+    {
+      //Quit Turn
+      computerTurnOut = cc.players[1].ChooseTurn(players[0].aTable);
+    }
     else
     {
-      //Final Accusation or Quit Game
+      //Quit Game
       isRunning = false;
     }
   }

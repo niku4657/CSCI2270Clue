@@ -24,7 +24,7 @@ class Human : public Player
     //Final Accusation
     void FinalAccusation(HashTable h);
     //Reveal a Card
-    string revealCard(string weapon, string suspect, string room);
+    string revealCard(string weapon, string suspect, string room, HashTable h);
 };
 
 #endif
