@@ -54,23 +54,6 @@ void Human::Suggest(int roll)
   }
 }
 
-bool Human::checkEnvelope(string weapon, string suspect, string room, HashTable h)
-{
-  Card *w = h.searchItem(0, weapon);
-  Card *s = h.searchItem(6, suspect);
-  Card *r = h.searchItem(12, room);
-
-  if(w == NULL || s == NULL || r == NULL)
-  {
-    return false;
-  }
-
-  if(w != NULL && s != NULL && r != NULL)
-  {
-    return true;
-  }
-}
-
 void Human::FinalAccusation(HashTable h)
 {
   string room;
@@ -91,7 +74,7 @@ void Human::FinalAccusation(HashTable h)
   getline(cin, room);
   cout << endl;
 
-  if(cc.checkEnvelope(weapon, suspect, room, h))
+  if(checkEnvelope(weapon, suspect, room, h))
   {
     cout << "Congratulations you won the game!!!!" << endl;
   }

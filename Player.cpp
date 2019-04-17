@@ -27,9 +27,21 @@ void Player::Suggest()
   //Leave empty.
 }
 
-bool Player::checkEnvelope()
+bool Player::checkEnvelope(string weapon, string suspect, string room, HashTable h)
 {
-  //Leave empty.
+	Card *w = h.searchItem(0, weapon);
+	Card *s = h.searchItem(6, suspect);
+	Card *r = h.searchItem(12, room);
+
+	if(w == NULL || s == NULL || r == NULL)
+	{
+		return false;
+	}
+
+	if(w != NULL && s != NULL && r != NULL)
+	{
+		return true;
+	}
 }
 
 void Player::FinalAccusation()
