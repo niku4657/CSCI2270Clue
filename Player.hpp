@@ -11,14 +11,18 @@ class Player
     HashTable *aTable;
 
   public:
+    //Constructor
     Player();
-    //The menu to roll, suggest, and make final accusation.
-    void Turn();
+    //Choose from menu to roll, suggest, and make final accusation.
+    void ChooseTurn();
     //Roll Function
     int Dice();
     //Print out Cards
     void printCards();
-
+    //Suggest Function
+    void Suggest();
+    //Final Accusation
+    void FinalAccusation();
 };
 
 #endif

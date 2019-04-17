@@ -1,18 +1,18 @@
-#ifndef COMPUTER_HPP
-#define COMPUTER_HPP
+#ifndef HUMAN_HPP
+#define HUMAN_HPP
 #include <cstring>
 #include <iostream>
 #include <string>
 using namespace std;
 
-class Computer : public Player
+class Human : public Player
 {
   private:
-    HashTable *cTable
+    HashTable *hTable;
 
   public:
     //Constructor
-    Computer();
+    Human();
     //Choose from menu to roll, suggest, and make final accusation.
     void ChooseTurn();
     //Roll Function
@@ -23,7 +23,6 @@ class Computer : public Player
     void Suggest();
     //Final Accusation
     void FinalAccusation();
-
 };
 
 #endif
