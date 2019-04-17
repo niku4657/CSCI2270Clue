@@ -24,6 +24,8 @@ class Computer : public Player
     //Final Accusation
     void FinalAccusation(HashTable h);
 
+    string revealCard(string weapon, string suspect, string room);
+
 };
 
 #endif
