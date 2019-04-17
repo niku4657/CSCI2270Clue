@@ -4,10 +4,6 @@
 
 using namespace std;
 
-Computer::Computer(){
-
-}
-
 int Computer::ChooseTurn(HashTable h){
   int computerTurn;
   cout << "Main Menu" << endl;
