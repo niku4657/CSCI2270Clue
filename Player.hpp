@@ -8,7 +8,7 @@ using namespace std;
 class Player
 {
   private:
-    HashTable *aPlayer;
+    HashTable *aTable;
 
   public:
     Player();
