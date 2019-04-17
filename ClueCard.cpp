@@ -120,27 +120,21 @@ void ClueCard::distributeCards(){
   // merge arrays into one array
   mergeArrays();
   // create 3 for loops
-
-
   for (int i = 0; i < 15; i + 3){
-    // create pointer and add pointer to card at index to hash table
-    // pointer is card struct: Card* card = new Card;
-    // card = weapon[i];
-    //insertItem(card->key, card->name)
+    Card* card = new Card;
+    card = allCards[i];
+    insertItem(card->key, card->name);
   }
   for (int i = 1; i < 15; i + 3){
-    // create pointer and add pointer to card at index to hash table
-    // pointer is card struct: Card* card = new Card;
-    // card = weapon[i];
-    //insertItem(card->key, card->name)
+    Card* nextCard = new Card;
+    card = allCards[i];
+    insertItem(card->key, card->name);
   }
   for (int i = 2; i < 15; i + 3){
-    // create pointer and add pointer to card at index to hash table
-    // pointer is card struct: Card* card = new Card;
-    // card = weapon[i];
-    //insertItem(card->key, card->name)
+    Card* thirdCard = new Card;
+    card = allCards[i];
+    insertItem(card->key, card->name);
   }
-
 }
 
 void ClueCard::duplicateCard(int key, string name, Player p)
