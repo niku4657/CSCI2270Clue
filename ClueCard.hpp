@@ -20,7 +20,7 @@ class ClueCard{
         void fillInSuspects();
         void fillInRooms();
         void shuffleCards();
-        void distrubuteCards();
+        void distributeCards();
         void printArray();
         void initializePlayersArray();
         void duplicateCard(int key, string name, Player p);

@@ -94,7 +94,7 @@ void ClueCard::shuffleCards()
     shuffleArray(room);
 }
 
-void ClueCard::distrubuteCards()
+void ClueCard::distributeCards()
 {
   // distrubute Cards from array of cards to individual player hash tables
   // merge arrays into one array
