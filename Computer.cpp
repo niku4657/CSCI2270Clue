@@ -6,17 +6,30 @@ using namespace std;
 
 Computer::Computer(){
 
-
 }
 
 void Computer::RandomTurn(){
+  int computerTurn;
   cout << "Main Menu" << endl;
-  cout << "2. Suggest" << endl;
-  cout << "3. Final Accusation" << endl;
-  cout << "4. Quit Turn" << endl;
+  cout << "1. Suggest" << endl;
+  cout << "2. Final Accusation" << endl;
+  cout << "3. Quit Turn" << endl;
 
-  //random function between 1 - 4
+  //random function between 1 - 3
+  computerTurn = rand() % 3 + 1;
 
+  if (computerTurn == 1)
+  {
+    RandomSuggest();
+  }
+  else if (computerTurn == 2)
+  {
+    FinalAccusation();
+  }
+  else if (computerTurn == 3)
+  {
+    cout << "You have quit your turn" << endl;
+  }
 
 }
 
@@ -56,7 +69,6 @@ void weaponHelper(){
   {
     computerSuggestWeapon = tempW->name;
   }
-
 }
 
 void Computer::RandomSuggest(bool final){
@@ -115,9 +127,17 @@ void Computer::RandomSuggest(bool final){
     weaponHelper();
     cout << "Weapon: " << computerSuggestWeapon << endl;
   }
+  else
+  {
+    //switch turn function
+  }
 }
 
 void Computer::FinalAccusation(){
+  //After dice roll
+  //one choice to get the envelope cards correct
+
+
 
 
 }
