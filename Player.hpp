@@ -26,6 +26,8 @@ class Player
     bool checkEnvelope(string weapon, string suspect, string room);
     //Final Accusation
     void FinalAccusation(HashTable h);
+    //Reveal a Card
+    string revealCard(string weapon, string suspect, string room);
 };
 
 #endif

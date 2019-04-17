@@ -72,14 +72,11 @@ void Human::Suggest(int roll)
     cout << "Weapon";
     getline(cin, weapon);
     cout << endl;
-
-    //CHECK OTHER PLAYER'S CARDS???
   }
   else
   {
     cout << "You can't enter a room, it is now the computer's turn.";
     cout << endl;
-    return;
   }
 }
 
@@ -115,4 +112,41 @@ void Human::FinalAccusation(HashTable h)
   cout << "The correct answer is:" << endl;
   h.printTable();
   return;
+}
+
+string Human::revealCard(string weapon, string suspect, string room)
+{
+  Card *w = hTable.searchItem(0, weapon);
+  Card *s = hTable.searchItem(6, suspect);
+  Card *r = hTable.searchItem(12, room);
+  string card = "";
+
+	if(w == NULL && s == NULL && r == NULL)
+	{
+		cout << "You have no cards to dispute that suggestion." << endl;
+	}
+
+	if(w != NULL || s != NULL || r != NULL)
+	{
+		cout << "Please choose a card to dispute the suggestion:" << endl;
+
+    if(w != NULL)
+    {
+      cout << w -> name << endl;
+    }
+
+    if(s != NULL)
+    {
+      cout << s -> name << endl;
+    }
+
+    if(r != NULL)
+    {
+      cout << r -> name << endl;
+    }
+
+    getline(cin, card);
+	}
+
+  return card;
 }
