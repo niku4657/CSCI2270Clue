@@ -6,17 +6,29 @@
 using namespace std;
 
 
-void Player::Turn(){
-
+Player::Player()
+{
+  //Empty.
 }
 
-int Player::Dice(){
-   int roll;
-   roll = rand() % 7;
-
-   cout << "You rolled a " << roll << endl;
+void Player::Turn()
+{
+  cout << "Main Menu" << endl;
+  cout << "1. Roll" << endl;
+  cout << "2. Suggest" << endl;
+  cout << "3. Final Accusation" << endl;
 }
 
-void Human::Move(){
+int Player::Dice()
+{
+  int roll;
+  roll = rand() % 7;
 
+  cout << "You rolled a " << roll << endl;
+}
+
+void Player::printCards()
+{
+  cout << "YOUR CARDS" << endl;
+  aTable.printTable();
 }
