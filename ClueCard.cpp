@@ -56,8 +56,7 @@ void ClueCard::shuffleCards(){
     envelope.insertItem(room[a].key, room[a].name);
     // delete card at index from array
 
-  // srand(time(0))
-  // n = size of array
+  //srand(time(0))
   // for (int i=0; i < n; i++){
   //   int r = i + (rand() % (15 - i))
   //   int temp = card[i]; card[i] = card[r]; card[r] = temp;
