@@ -11,21 +11,21 @@ struct Card
     int key;
     string name;
     struct Card* next;
-    
+
 };
 
 class HashTable
 {
-    int tableSize;  // No. of buckets (linked lists)
+    int tableSize = 3;  // No. of buckets (linked lists)
 
     // Pointer to an array containing buckets
     Card* *table;
 
     Card* createCard(int key, string name, Card* next);
 public:
-    HashTable(int bsize);  // Constructor
+    HashTable();  // Constructor
 
-    void convertKey(int key);
+    //void convertKey(int key);
 
     int getKey();
 
