@@ -39,7 +39,7 @@ Card* HashTable::createCard(int key, string name, Card* next)
 
 HashTable::HashTable(int bsize)
 {
-    this->tableSize= bsize;
+    //this->tableSize= bsize;
     table = new Card*[tableSize];
     for(int i=0;i<bsize;i++)
         table[i] = nullptr;

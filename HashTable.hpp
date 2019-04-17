@@ -16,16 +16,14 @@ struct Card
 
 class HashTable
 {
-    int tableSize;  // No. of buckets (linked lists)
+    int tableSize = 3;  // No. of buckets (linked lists)
 
     // Pointer to an array containing buckets
     Card* *table;
 
     Card* createCard(int key, string name, Card* next);
 public:
-    HashTable(int bsize);  // Constructor
-
-    // void convertKey(int key);
+    HashTable();  // Constructor
 
     int getKey();
 
