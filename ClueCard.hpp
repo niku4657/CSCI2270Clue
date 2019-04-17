@@ -12,11 +12,12 @@ class ClueCard{
         Card suspect[6];
         Card room[6];
         HashTable envelope(3);
-        //HashTable allCards;
+        Card allCards;
         Player players[3];
 
     public:
         void addCardArray(Card cards[], int key, string name);
+        void mergeArrays();
         void fillInWeapons();
         void fillInSuspects();
         void fillInRooms();

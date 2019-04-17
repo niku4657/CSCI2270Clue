@@ -89,10 +89,41 @@ void ClueCard::shuffleCards(){
 //
 // }
 
+void ClueCard::mergeArrays(){
+  for (int i = 0; i < 15; i++){
+    if (i < 5){
+      allCards[i] = weapon[i];
+    }
+    else if(i >= 5 && i < 10){
+      allCards[i] = suspect[i - 5];
+    }
+    else if(i >= 10 && i < 15){
+      allCards[i] = room[i-10];
+    }
+  }
+  // delete old arrays??
+
+}
+
 void ClueCard::distrubuteCards(){
   // distrubute Cards from array of cards to individual player hash tables
   // merge arrays into one array
+  mergeArrays();
   // create 3 for loops
+
+
+  for (int i = 0; i < 15; i + 3){
+    // create pointer and add pointer to card at index to hash table
+    // pointer is card struct: Card* card = new Card;
+    // card = weapon[i];
+    //insertItem(card->key, card->name)
+  }
+  for (int i = 0; i < 15; i + 3){
+    // create pointer and add pointer to card at index to hash table
+    // pointer is card struct: Card* card = new Card;
+    // card = weapon[i];
+    //insertItem(card->key, card->name)
+  }
   for (int i = 0; i < 15; i + 3){
     // create pointer and add pointer to card at index to hash table
     // pointer is card struct: Card* card = new Card;
