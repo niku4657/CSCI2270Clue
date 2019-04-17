@@ -46,10 +46,14 @@ void ClueCard::printArray(){
 
 void ClueCard::shuffleCards(){
     srand(time(0));
-    int r = rand() % 5;
+    int w = rand() % 5;
     // use rand function to get random index from 0 -5
-    envelope.insertItem()
-    // add card to envelope: envelope.insertItem(cards[i].getKey, cards[i])
+    envelope.insertItem(weapon[r].key, weapon[r].name);
+    // add card to envelope: envelope.insertItem(cards[i].key, cards[i].name)
+    int s = rand() % 5;
+    envelope.insertItem(suspect[s].key, weapon[s].name);
+    int a = rand() % 5;
+    envelope.insertItem(room[a].key, room[a].name);
     // delete card at index from array
 
   // srand(time(0))
@@ -83,7 +87,8 @@ string ClueCard::revealCard(){
 }
 
 int main(){
-//     ClueCard cards;
-//     cards.fillInWeapons();
-//     cards.printArray();
+    ClueCard cards;
+    cards.fillInWeapons();
+    cards.printArray();
+    shuffleCards();
 }
