@@ -10,7 +10,6 @@ int Computer::ChooseTurn(HashTable h){
   cout << "1. Suggest" << endl;
   cout << "2. Final Accusation" << endl;
   cout << "3. Quit Turn" << endl;
-  cout << "4. Quit Game" << endl;
 
   //random function between 1 - 3
   computerTurn = rand() % 4 + 1;
@@ -30,12 +29,6 @@ int Computer::ChooseTurn(HashTable h){
     cout << "The computer has quit its turn" << endl; //Switch turn in int main
     return 3;
   }
-  else if (computerTurn == 4)
-  {
-    cout << "The computer has quit the game" << endl;
-    return 4;
-  }
-
 }
 
 void Computer::printCards(){
