@@ -12,7 +12,7 @@ class Human : public Player
 
   public:
     //Choose from menu to roll, suggest, and make final accusation.
-    void ChooseTurn();
+    int ChooseTurn(HashTable h);
     //Roll Function
     int Dice();
     //Print out Cards

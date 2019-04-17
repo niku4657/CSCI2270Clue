@@ -7,7 +7,7 @@ Player::Player()
   //Leave empty.
 }
 
-void Player::ChooseTurn()
+int Player::ChooseTurn(HashTable h)
 {
   //Leave empty.
 }

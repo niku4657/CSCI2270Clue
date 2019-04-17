@@ -2,9 +2,38 @@
 #include "Human.hpp"
 using namespace std;
 
-void Human::ChooseTurn()
+int Human::ChooseTurn(HashTable h)
 {
-  //Leave empty.
+  string option;
+  cout << "Main Menu" << endl;
+  cout << "1. Suggest" << endl;
+  cout << "2. Final Accusation" << endl;
+  cout << "3. Quit Turn" << endl;
+  cout << "4. Quit Game" << endl;
+
+  cout << "Please pick one of the options above." << endl;
+  getline(cin, option);
+
+  if (option == 1)
+  {
+    Suggest();
+  }
+  else if (option == 2)
+  {
+    FinalAccusation(h);
+  }
+  else if (option == 3)
+  {
+    cout << "You have quit your turn." << endl;
+    return 3;
+  }
+  else if(option == 4)
+  {
+    cout << "You have quit the game." << endl;
+    return 4;;
+  }
+
+  return 0;
 }
 
 void Human::printCards()
