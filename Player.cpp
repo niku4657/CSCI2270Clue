@@ -17,6 +17,7 @@ void Player::Turn()
   cout << "1. Roll" << endl;
   cout << "2. Suggest" << endl;
   cout << "3. Final Accusation" << endl;
+  cout << "4. Quit Turn" << endl;
 }
 
 int Player::Dice()
@@ -25,6 +26,7 @@ int Player::Dice()
   roll = rand() % 7;
 
   cout << "You rolled a " << roll << endl;
+  return roll;
 }
 
 void Player::printCards()
