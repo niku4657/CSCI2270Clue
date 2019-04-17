@@ -13,6 +13,7 @@ class ClueCard{
         Card room[6];
         HashTable envelope(3);
         //HashTable allCards;
+        Player players[3];
 
     public:
         void addCardArray(Card cards[], int key, string name);
@@ -20,11 +21,11 @@ class ClueCard{
         void fillInSuspects();
         void fillInRooms();
         void shuffleCards();
-        void combineCards();
-        void distrubuteCards();
-        string getCardKey();
+        //void combineCards();
+        void distrubuteCards(); // pass in player
+        // string getCardKey();
         //void setCardType(string);
-        string getCardName();
+        //string getCardName();
         //void setCardName(string);
         string revealCard();
         void printArray();
