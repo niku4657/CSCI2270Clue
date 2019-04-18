@@ -83,7 +83,7 @@ bool HashTable::insertItem(int key, string name)
 }
 
 //function to search
-Card* HashTable::searchItem(int key)
+Card* HashTable::searchItem(int key, string name)
 {
     //Compute the index by using the hash function
     int index = hashFunction(key);
