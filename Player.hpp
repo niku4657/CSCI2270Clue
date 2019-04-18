@@ -10,6 +10,7 @@ class Player
 {
   private:
     HashTable *aTable;
+    HashTable *ptable;
 
   public:
     //Constructor

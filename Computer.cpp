@@ -3,8 +3,9 @@
 #include "HashTable.hpp"
 using namespace std;
 
-int Computer::ChooseTurn(HashTable h){
+string Computer::ChooseTurn(){
   int computerTurn;
+  string compResult;
   cout << "Main Menu" << endl;
   cout << "1. Suggest" << endl;
   cout << "2. Final Accusation" << endl;
@@ -15,18 +16,18 @@ int Computer::ChooseTurn(HashTable h){
 
   if (computerTurn == 1)
   {
-    Suggest();
-    return 1;
+    compResult = Suggest();
+    return compResult;
   }
   else if (computerTurn == 2)
   {
-    FinalAccusation(h);
-    return 2;
+    compResult = FinalAccusation(h);
+    return compResult;
   }
   else if (computerTurn == 3)
   {
     cout << "The computer has quit its turn" << endl; //Switch turn in int main
-    return 3;
+    return "Quit Turn";
   }
 }
 
@@ -67,7 +68,7 @@ string weaponHelper(){
   return computerSuggestWeapon;
 }
 
-void Computer::Suggest(int roll){
+string Computer::Suggest(int roll){
   //After the dice roll
   string computerRoomChoice;
   string computerSuggestRoom;
@@ -123,14 +124,18 @@ void Computer::Suggest(int roll){
     cout << "Suspect: " << computerSuggestSuspect << endl;
     computerSuggestWeapon = weaponHelper();
     cout << "Weapon: " << computerSuggestWeapon << endl;
+
+    string compSuggest = computerSuggestWeapon + ", " + computerSuggestSuspect + ", " + computerSuggestRoom;
+
+    return compSuggest;
   }
   else
   {
-    return;
+    return "";
   }
 }
 
-void Computer::FinalAccusation(HashTable h){
+string Computer::FinalAccusation(){
   bool inEnvelope;
   //After dice roll, one choice to get the envelope cards correct
   RandomSuggest(); //Basically make a Suggestion
@@ -150,42 +155,5 @@ void Computer::FinalAccusation(HashTable h){
 
   cout << "The correct answer is:" << endl;
   h.printTable();
-  return;
-}
-
-string Computer::revealCard(string weapon, string suspect, string room, HashTable h)
-{
-  Card *w = h.searchItem(0, weapon);
-  Card *s = h.searchItem(6, suspect);
-  Card *r = h.searchItem(12, room);
-  string card = "";
-
-	if(w == NULL && s == NULL && r == NULL)
-	{
-		cout << "You have no cards to dispute that suggestion." << endl;
-	}
-
-	if(w != NULL || s != NULL || r != NULL)
-	{
-		cout << "Please choose a card to dispute the suggestion:" << endl;
-
-    if(w != NULL)
-    {
-      cout << w -> name << endl;
-    }
-
-    if(s != NULL)
-    {
-      cout << s -> name << endl;
-    }
-
-    if(r != NULL)
-    {
-      cout << r -> name << endl;
-    }
-
-    getline(cin, card);
-	}
-
-  return card;
+  return "";
 }
