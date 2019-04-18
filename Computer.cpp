@@ -1,7 +1,6 @@
 #include <iostream>
 #include "Computer.hpp"
 #include "HashTable.hpp"
-
 using namespace std;
 
 int Computer::ChooseTurn(HashTable h){

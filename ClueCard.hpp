@@ -3,29 +3,25 @@
 #include <iostream>
 #include <string>
 #include "HashTable.hpp"
-
 using namespace std;
 
-class ClueCard{
+class ClueCard
+{
     private:
         Card weapon[6];
         Card suspect[6];
         Card room[6];
         HashTable envelope();
-        Card allCards;
-        Player players[3];
+        Card allCards[];
 
     public:
         void addCardArray(Card cards[], int key, string name);
-        void mergeArrays();
         void fillInWeapons();
         void fillInSuspects();
-        void fillInRooms();
-        void shuffleCards();
-        void distributeCards();
         void printArray();
-        void initializePlayersArray();
-        void duplicateCard(int key, string name, Player p);
+        void shuffleCards();
+        void fillInRooms();
+        void mergeArrays();
 };
 
 #endif
