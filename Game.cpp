@@ -1,12 +1,26 @@
 #include <iostream>
-#include "ClueCard.hpp"
-#include "HashTable.hpp"
-#include "Player.hpp"
-#include "Human.hpp"
-#include "Computer.hpp"
+#include "Game.hpp"
 using namespace std;
 
-int main()
+void Game::distributeCards(){
+  // distribute Cards from array of cards to individual player hash tables
+  // merge arrays into one array
+  //Use cc.allCards[] and distribute into players' hashtables using players[]!!
+}
+
+void Game::duplicateCard(int key, string name, Player p)
+{
+  p.aTable.insertItem(key, name);
+}
+
+void Game::initializePlayersArray()
+{
+  players[0] = new Human;
+  players[1] = new Computer;
+  players[2] = new Computer;
+}
+
+void startGame()
 {
   //Game Setup
   ClueCard cc;
@@ -24,7 +38,7 @@ int main()
 
   //Game Start
   cout << "Game Intro" << endl;
-
+int moveToNext
   while(isRunning)
   {
     humanTurnOut = cc.players[0].ChooseTurn(players[1].aTable);

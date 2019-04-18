@@ -1,7 +1,6 @@
 #include <iostream>
 #include "HashTable.hpp"
 #include "ClueCard.hpp"
-
 using namespace std;
 
 void ClueCard::addCardArray(Card cards[], int _key, string _name)
@@ -94,11 +93,6 @@ void ClueCard::shuffleCards()
     shuffleArray(room);
 }
 
-// May not need this function since all of the cards are in one hash table
-// void ClueCard::combineCards(){
-//
-// }
-
 void ClueCard::mergeArrays(){
   for (int i = 0; i < 15; i++){
     if (i < 5){
@@ -111,14 +105,11 @@ void ClueCard::mergeArrays(){
       allCards[i] = room[i-10];
     }
   }
-  // delete old arrays??
 
-}
+  delete weapon[];
+  delete suspect[];
+  delete room[];
 
-void ClueCard::distributeCards(){
-  // distrubute Cards from array of cards to individual player hash tables
-  // merge arrays into one array
-  mergeArrays();
   // create 3 for loops
   for (int i = 0; i < 15; i + 3){
     Card* card = new Card;
@@ -135,24 +126,4 @@ void ClueCard::distributeCards(){
     card = allCards[i];
     insertItem(card->key, card->name);
   }
-}
-
-void ClueCard::duplicateCard(int key, string name, Player p)
-{
-  p.aTable.insertItem(key, name);
-}
-
-void ClueCard::initializePlayersArray()
-{
-  players[0] = new Human;
-  players[1] = new Computer;
-  players[2] = new Computer;
-}
-
-int main()
-{
-    ClueCard cards;
-    cards.fillInWeapons();
-    cards.printArray();
-    shuffleCards();
 }
