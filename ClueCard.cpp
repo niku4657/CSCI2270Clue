@@ -109,21 +109,4 @@ void ClueCard::mergeArrays(){
   delete weapon[];
   delete suspect[];
   delete room[];
-
-  // create 3 for loops
-  for (int i = 0; i < 15; i + 3){
-    Card* card = new Card;
-    card = allCards[i];
-    insertItem(card->key, card->name);
-  }
-  for (int i = 1; i < 15; i + 3){
-    Card* nextCard = new Card;
-    card = allCards[i];
-    insertItem(card->key, card->name);
-  }
-  for (int i = 2; i < 15; i + 3){
-    Card* thirdCard = new Card;
-    card = allCards[i];
-    insertItem(card->key, card->name);
-  }
 }
