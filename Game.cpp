@@ -25,9 +25,9 @@ void Game::distributeCards(){
   //Use cc.allCards[] and distribute into players' hashtables using players[]!!
 }
 
-void Game::duplicateCard(int key, string name, Player p)
+void Game::duplicateCard(Card* card, Player p)
 {
-  p.aTable.insertItem(key, name);
+  p.aTable.insertItem(card->key, card->name);
 }
 
 void Game::initializePlayersArray()
