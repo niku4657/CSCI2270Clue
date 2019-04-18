@@ -2,9 +2,10 @@
 #include "Human.hpp"
 using namespace std;
 
-int Human::ChooseTurn(HashTable h)
+string Human::ChooseTurn()
 {
   string option;
+  string turnResult;
   int roll = Dice();
   cout << "You rolled a " << roll << endl;
   cout << "Main Menu" << endl;
@@ -18,26 +19,26 @@ int Human::ChooseTurn(HashTable h)
 
   if (option == 1)
   {
-    Suggest(roll, h);
-    return 1;
+    turnResult = Suggest(roll, h);
+    return turnResult;
   }
   else if (option == 2)
   {
-    FinalAccusation(h);
-    return 2;
+    turnResult = FinalAccusation(h);
+    return turnResult;
   }
   else if (option == 3)
   {
     cout << "You have quit your turn." << endl;
-    return 3;
+    return "Quit Turn";
   }
   else if(option == 4)
   {
     cout << "You have quit the game." << endl;
-    return 4;;
+    return "Quit Game";
   }
 
-  return 0;
+  return "";
 }
 
 void Human::printCards()
@@ -46,7 +47,7 @@ void Human::printCards()
   hTable.printTable();
 }
 
-void Human::Suggest(int roll, HashTable h)
+string Human::Suggest(int roll)
 {
   string room;
   string suspect;
@@ -77,17 +78,19 @@ void Human::Suggest(int roll, HashTable h)
     getline(cin, weapon);
     cout << endl;
 
-    string eliminated = revealCard(weapon, suspect, room, h);
-    hTable.insertItem(0, eliminated);
+    string suggestResult = weapon + ", " + suspect + ", " + room;
+
+    return suggestResult;
   }
   else
   {
     cout << "You can't enter a room, it is now the computer's turn.";
     cout << endl;
+    return "";
   }
 }
 
-void Human::FinalAccusation(HashTable h)
+string Human::FinalAccusation()
 {
   string room;
   string suspect;
@@ -118,185 +121,5 @@ void Human::FinalAccusation(HashTable h)
 
   cout << "The correct answer is:" << endl;
   h.printTable();
-  return;
-}
-
-string Human::revealCard(string weapon, string suspect, string room, HashTable h)
-{
-  int randReveal;
-  Card *w = h.searchItem(0, weapon);
-	Card *s = h.searchItem(6, suspect);
-	Card *r = h.searchItem(12, room);
-
-	if(w == NULL && s == NULL && r == NULL)
-	{
-    cout << "The computer has no cards that dispute the suggestion" << endl;
-    return "";
-	}
-
-	if(w != NULL || s != NULL || r != NULL)
-	{
-    if (w != NULL)
-    {
-      if(s != NULL && r != NULL)
-      {
-        //Case of computer having all cards.
-        randReveal = rand() % 3 + 1; //computer is choosing a card to reveal at random
-
-        if (randReveal == 1)
-        {
-          return w->name;
-        }
-        else if (randReveal == 2)
-        {
-          return s->name;
-        }
-        else if (randReveal == 3)
-        {
-          return r->name;
-        }
-      }
-      else if(s != NULL && r == NULL)
-      {
-        //Case of computer having two cards.
-        randReveal = rand() % 2 + 1;
-
-        if (randReveal == 1)
-        {
-          return w->name;
-        }
-        else if (randReveal == 2)
-        {
-          return s->name;
-        }
-      }
-      else if(s == NULL && r != NULL)
-      {
-        //Case of computer having two cards.
-        randReveal = rand() % 2 + 1;
-
-        if (randReveal == 1)
-        {
-          return w->name;
-        }
-        else if (randReveal == 2)
-        {
-          return r->name;
-        }
-      }
-      else
-      {
-        //Case of computer having one card.
-        return w -> name;
-      }
-    }
-    if (s != NULL)
-    {
-      if(w != NULL && r != NULL)
-      {
-        //Case of computer having all cards.
-        randReveal = rand() % 3 + 1; //computer is choosing a card to reveal at random
-
-        if (randReveal == 1)
-        {
-          return s->name;
-        }
-        else if (randReveal == 2)
-        {
-          return w->name;
-        }
-        else if (randReveal == 3)
-        {
-          return r->name;
-        }
-      }
-      else if(w != NULL && r == NULL)
-      {
-        //Case of computer having two cards.
-        randReveal = rand() % 2 + 1;
-
-        if (randReveal == 1)
-        {
-          return s->name;
-        }
-        else if (randReveal == 2)
-        {
-          return w->name;
-        }
-      }
-      else if(w == NULL && r != NULL)
-      {
-        //Case of computer having two cards.
-        randReveal = rand() % 2 + 1;
-
-        if (randReveal == 1)
-        {
-          return s->name;
-        }
-        else if (randReveal == 2)
-        {
-          return r->name;
-        }
-      }
-      else
-      {
-        //Case of computer having one card.
-        return s -> name;
-      }
-    }
-    if (r != NULL)
-    {
-      if(w != NULL && s != NULL)
-      {
-        //Case of computer having all cards.
-        randReveal = rand() % 3 + 1; //computer is choosing a card to reveal at random
-
-        if (randReveal == 1)
-        {
-          return r->name;
-        }
-        else if (randReveal == 2)
-        {
-          return w->name;
-        }
-        else if (randReveal == 3)
-        {
-          return s->name;
-        }
-      }
-      else if(w != NULL && s == NULL)
-      {
-        //Case of computer having two cards.
-        randReveal = rand() % 2 + 1;
-
-        if (randReveal == 1)
-        {
-          return r->name;
-        }
-        else if (randReveal == 2)
-        {
-          return w->name;
-        }
-      }
-      else if(w == NULL && s != NULL)
-      {
-        //Case of computer having two cards.
-        randReveal = rand() % 2 + 1;
-
-        if (randReveal == 1)
-        {
-          return r->name;
-        }
-        else if (randReveal == 2)
-        {
-          return s->name;
-        }
-      }
-      else
-      {
-        //Case of computer having one card.
-        return r -> name;
-      }
-    }
-	}
+  return "";
 }
