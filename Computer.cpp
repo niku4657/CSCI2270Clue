@@ -1,9 +1,11 @@
 #include <iostream>
 #include "Computer.hpp"
 #include "HashTable.hpp"
+#include "Player.hpp"
 using namespace std;
 
-string Computer::ChooseTurn(){
+string ChooseTurn()
+{
   int computerTurn;
   string compResult;
   int roll = Dice();
@@ -24,7 +26,7 @@ string Computer::ChooseTurn(){
   }
   else if (computerTurn == 2)
   {
-    compResult = FinalAccusation(h);
+    compResult = FinalAccusation();
     return compResult;
   }
   else if (computerTurn == 3)
@@ -34,17 +36,24 @@ string Computer::ChooseTurn(){
   }
 }
 
-void Computer::printCards(){
-  cTable.printTable();
+int Dice()
+{
+	return rand() % 6 + 1; //Random from 1 to 6 is returned.
 }
-string suspectHelper(){
+
+void printCards(){
+  aTable -> printTable();
+  pTable -> printTable();
+}
+
+string Computer::suspectHelper(){
   int randSuspect;
   string computerSuggestSuspect;
   //rand function between 6 and 11
   randSuspect = rand() % 6 + 6;
 
   //call search function with that random integer
-  Card *temp = cTable.searchItem(randSuspect);
+  Card *temp = aTable -> searchItem(randSuspect);
 
   if(temp != NULL)
   {
@@ -54,14 +63,14 @@ string suspectHelper(){
   return computerSuggestSuspect;
 }
 
-string weaponHelper(){
+string Computer::weaponHelper(){
   int randWeapon;
   string computerSuggestWeapon;
   //rand function between 12 and 17
   randWeapon = rand() % 6 + 12;
 
   //call search function with that random integer
-  Card *tempW = cTable.searchItem(randWeapon);
+  Card *tempW = aTable -> searchItem(randWeapon);
 
   if (tempW != NULL)
   {
@@ -71,7 +80,7 @@ string weaponHelper(){
   return computerSuggestWeapon;
 }
 
-string Computer::Suggest(int roll){
+string Suggest(int roll){
   //After the dice roll
   string computerRoomChoice;
   string computerSuggestRoom;
@@ -91,7 +100,7 @@ string Computer::Suggest(int roll){
 
     computerDice = rand() % 6 + 1;
 
-    switch(stoi(computerDice))
+    switch(computerDice)
     {
       case 1:
         computerSuggestRoom = "UMC";
@@ -138,25 +147,7 @@ string Computer::Suggest(int roll){
   }
 }
 
-string Computer::FinalAccusation(){
-  bool inEnvelope;
-  //After dice roll, one choice to get the envelope cards correct
-  RandomSuggest(); //Basically make a Suggestion
-
-  //search envelope hash table -->helper function called checkEnvelopeComputer
-  inEnvelope = checkEnvelope(computerSuggestWeapon, computerSuggestSuspect, computerSuggestRoom);
-  //if all cards are found
-  if (inEnvelope == true)
-  {
-    cout << "You lost! The computer successfully uncovered the details of the murder." << endl;
-  }
-  else
-  {
-    //if none are found or at least one doesn't match
-    cout << "The computer didn't accurately solve the murder mystery. " << endl;
-  }
-
-  cout << "The correct details to this mystery were: " << endl;
-  h.printTable();
-  return "";
+string FinalAccusation()
+{
+  return "Final Accusation";
 }

@@ -3,6 +3,16 @@
 #include "ClueCard.hpp"
 using namespace std;
 
+ClueCard::ClueCard()
+{
+  //Leave empty.
+}
+
+ClueCard::~ClueCard()
+{
+  //Leave empty.
+}
+
 void ClueCard::addCardArray(Card cards[], int _key, string _name)
 {
   cards[_key] = {_key, _name};
@@ -51,7 +61,7 @@ void ClueCard::printArray()
 
 void deleteElement(Card cards[], int key, int size)
 {
-  n = size;
+  int n = size;
   for (int i = 0; i < n; i++){
     if (cards[i].key == key){
       for (int j = i; j < n-1; j++){
@@ -66,25 +76,24 @@ void shuffleArray(Card cards[])
 {
   for (int i=0; i < 5; i++)
   {
-    int r = i + (rand() % (5 - i))
-    int temp = cards[i]; cards[i] = cards[r]; cards[r] = temp; // fisher-yates algorithm was the best to use
+    int r = i + (rand() % (5 - i));
+    Card temp = cards[i]; cards[i] = cards[r]; cards[r] = temp; // fisher-yates algorithm was the best to use
   }
 }
 
 void ClueCard::shuffleCards()
 {
-    srand(time(0));
     int w = rand() % 5;
     // use rand function to get random index from 0 -5
-    envelope.insertItem(weapon[r].key, weapon[r].name);
+    envelope -> insertItem(weapon[w].key, weapon[w].name);
     // add card to envelope: envelope.insertItem(cards[i].key, cards[i].name)
-    deleteElement(weapon, weapon[r].key, 6);
+    deleteElement(weapon, weapon[w].key, 6);
     int s = rand() % 5;
-    envelope.insertItem(suspect[s].key, weapon[s].name);
-    deleteElement(suspect, suspect[r].key, 6);
+    envelope -> insertItem(suspect[s].key, weapon[s].name);
+    deleteElement(suspect, suspect[s].key, 6);
 
-    int a = rand() % 5;
-    envelope.insertItem(room[a].key, room[a].name);
+    int r = rand() % 5;
+    envelope -> insertItem(room[r].key, room[r].name);
     deleteElement(room, room[r].key, 6);
 
     // delete card at index from array
@@ -105,8 +114,21 @@ void ClueCard::mergeArrays(){
       allCards[i] = room[i-10];
     }
   }
+}
 
-  delete weapon[];
-  delete suspect[];
-  delete room[];
+bool ClueCard::checkEnvelope(string weapon, string suspect, string room)
+{
+	Card *w = envelope -> searchItem(0, weapon);
+	Card *s = envelope -> searchItem(6, suspect);
+	Card *r = envelope -> searchItem(12, room);
+
+	if(w == NULL || s == NULL || r == NULL)
+	{
+		return false;
+	}
+
+	if(w != NULL && s != NULL && r != NULL)
+	{
+		return true;
+	}
 }

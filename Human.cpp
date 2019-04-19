@@ -21,23 +21,23 @@ string Human::ChooseTurn()
   cout << "Pick one of the options above." << endl;
   getline(cin, option);
 
-  if (option == 1)
+  if (option == "1")
   {
     turnResult = Suggest(roll);
     return turnResult;
   }
-  else if (option == 2)
+  else if (option == "2")
   {
     turnResult = FinalAccusation();
     return turnResult;
   }
-  else if (option == 3)
+  else if (option == "3")
   {
     cout << "You have chosen to quit your turn. The computer will now proceed with their turn." << endl;
     quitTurn = "Quit Turn";
     return quitTurn;
   }
-  else if(option == 4)
+  else if(option == "4")
   {
     cout << "You have chosen to quit the game. Goodbye!" << endl;
     quitGame = "Quit Game";
@@ -46,12 +46,18 @@ string Human::ChooseTurn()
   return "";
 }
 
+int Human::Dice()
+{
+	return rand() % 6 + 1; //Random from 1 to 6 is returned.
+}
+
 void Human::printCards()
 {
   cout << "YOUR CARDS" << endl;
   cout << "* Reference these cards to make future suggestions";
   cout << " about what evidence is eliminated and which could be solution to the mystery *" << endl;
-  hTable.printTable();
+  aTable -> printTable();
+  pTable -> printTable();
 }
 
 string Human::Suggest(int roll)
@@ -62,7 +68,7 @@ string Human::Suggest(int roll)
 
   if (roll == 1 || roll == 3 || roll == 5)
   {
-    cout << "Your roll has landed you in a room! Choose from the following:"
+    cout << "Your roll has landed you in a room! Choose from the following:" << endl;
     cout << "UMC" << endl;
     cout << "Farrand Field" << endl;
     cout << "CSEL" << endl;
@@ -119,18 +125,9 @@ string Human::FinalAccusation()
   getline(cin, suspect);
   cout << endl;
 
-  cout << "Room:"
+  cout << "Room:";
   getline(cin, room);
   cout << endl;
 
-  if(checkEnvelope(weapon, suspect, room))
-  {
-    cout << "Congratulations, you have successfully solved the mystery! Great job detective!" << endl;
-  }
-  else
-  {
-    cout << "Sorry! You have not accurately uncovered the suspects of this mystery. Better luck next time!" << endl;
-  }
-  
   return "Final Accusation";
 }

@@ -1,12 +1,28 @@
 #include <iostream>
 #include <string>
 #include "Game.hpp"
+#include "Computer.hpp"
+#include "Player.hpp"
+#include "Human.hpp"
+#include "HashTable.hpp"
+#include "ClueCard.hpp"
 using namespace std;
+
+Game::Game()
+{
+  //Leave empty.
+}
+
+Game::~Game()
+{
+  //Leave empty.
+}
 
 void Game::initializePlayersArray()
 {
-  players[0] = new Human;
-  players[1] = new Computer;
+  players[0] = new Human();
+  players[1] = new Computer();
+  players[2] = new Computer();
 }
 
 void Game::distributeCards(){
@@ -16,28 +32,27 @@ void Game::distributeCards(){
   // create 3 for loops
   for (int i = 0; i < 15; i + 2){
     Card* card = new Card;
-    card = cc.allCards[i];
-    players[0].aTable.insertItem(card->key, card->name);
+    card = &(cc.allCards[i]);
+    players[0] -> aTable -> insertItem(card -> key, card -> name);
   }
   for (int i = 1; i < 15; i + 2){
     Card* nextCard = new Card;
-    card = cc.allCards[i];
-    players[1].aTable.insertItem(card->key, card->name);
+    nextCard = &(cc.allCards[i]);
+    players[1] -> aTable -> insertItem(card -> key, card -> name);
   }
-  //Use cc.allCards[] and distribute into players' hashtables using players[]!!
 }
 
 void Game::duplicateCard(Card* card, Player p)
 {
-  p.aTable.insertItem(card->key, card->name);
+  p.pTable -> insertItem(card -> key, card -> name);
 }
 
 Card* humanRevealCard(string weapon, string suspect, string room)
 {
   string card = "";
-  Card *w = players[1].oTable.searchItem(0, weapon);
-  Card *s = players[1].oTable.searchItem(6, suspect);
-  Card *r = players[1].oTable.searchItem(12, room);
+  Card *w = players[1].pTable -> searchItem(0, weapon);
+  Card *s = players[1].pTable -> searchItem(6, suspect);
+  Card *r = players[1].pTable -> searchItem(12, room);
 
 	if(w == NULL && s == NULL && r == NULL)
 	{
@@ -85,14 +100,14 @@ Card* humanRevealCard(string weapon, string suspect, string room)
 Card* computerRevealCard(string weapon, string suspect, string room)
 {
   int randReveal;
-  Card *w = players[0].oTable.searchItem(0, weapon);
-  Card *s = players[0].oTable.searchItem(6, suspect);
-  Card *r = players[0].oTable.searchItem(12, room);
+  Card *w = players[0].pTable -> searchItem(0, weapon);
+  Card *s = players[0].pTable -> searchItem(6, suspect);
+  Card *r = players[0].pTable -> searchItem(12, room);
 
 	if(w == NULL && s == NULL && r == NULL)
 	{
     cout << "The computer has no cards that dispute the human's suggestion." << endl;
-    return "";
+    return NULL;
 	}
 
 	if(w != NULL || s != NULL || r != NULL)
@@ -293,68 +308,83 @@ int split(string str, char c, string array[], int size)
 
 void startGame()
 {
-  //Game Setup
-  bool isRunning = true;
-  string arr[4];
-  string humanTurnOut;
-  string gameSuggest = "Suggest";
-  string gameAccuse = "Final Accusation";
-  string computerTurnOut;
-
-  cc.initializePlayersArray();
-
-  cc.fillInWeapons();
-  cc.fillInSuspects();
-  cc.fillInRooms();
-  cc.shuffleCards();
-  cc.distributeCards();
-
-  //Game Start
-  cout << "                  Welcome to the Game of Clue!" << endl;
-  cout << "---------------------------------------------------------------" << endl;
-  cout << "Somewhere on the vast campus of University of Colorado Boulder, a horrible crime was committed." << endl;
-  cout << "The suspects of this crime could be anyone, anywhere, or anything." << endl;
-  cout << "It's your job to journey through the campus and use clues to determine which suspects";
-  cout << " are eliminated and which are the potential criminals." << endl;
-  cout << "By playing against the computer, you will solve this murder mystery by making suggestions along";
-  cout << " the way to help your elimination, and make a final accusation if you think you have uncovered the culprit." << endl;
-  cout << "                  It's time to start the game... " << endl;
-  cout << "---------------------------------------------------------------" << endl;
-  cout << "         Good Luck, and may the best detective win!" << endl;
-  //int moveToNext
-  int currTurn=0;
-  int numOfPlayers=2;
-  while(isRunning)
-  {
-    currTurn=currTurn%numOfPlayers;
-    humanTurnOut = players[currTurn].ChooseTurn(players[1].aTable);
-
-    if(humanTurnOut.find(gameSuggest) != npos) //npos means greatest length of string
-    {
-      //Suggestion
-      split(humanTurnOut, ',', arr, 4);
-      Card *c = computerRevealCard(arr[1], arr[2], arr[3]);
-      duplicateCard(c, players[0]);
-      computerTurnOut = players[1].ChooseTurn(players[0].aTable);//switch players
-    }
-    else if(humanTurnOut.find(gameAccuse) != npos)
-    {
-      //Final Accusation
-      cout << "The correct details to this mystery were: " << endl;
-      cc.envelope.printTable();
-      isRunning = false;
-    }
-    else if(humanTurnOut == "Quit Turn")
-    {
-      //Quit Turn
-      computerTurnOut = players[1].ChooseTurn(players[0].aTable); //switch players
-    }
-    else
-    {
-      //Quit Game
-      cout << "You have quit the game." << endl;
-      isRunning = false;
-    }
-    currTurn++;
-  }
+  // //Game Setup
+  // bool isRunning = true;
+  // string arr[4];
+  // string humanTurnOut;
+  // string gameSuggest = "Suggest";
+  // string gameAccuse = "Final Accusation";
+  // string computerTurnOut;
+  //
+  // cc.initializePlayersArray();
+  //
+  // cc.fillInWeapons();
+  // cc.fillInSuspects();
+  // cc.fillInRooms();
+  // cc.shuffleCards();
+  // cc.distributeCards();
+  //
+  // //Game Start
+  // cout << "                  Welcome to the Game of Clue!" << endl;
+  // cout << "---------------------------------------------------------------" << endl;
+  // cout << "Somewhere on the vast campus of University of Colorado Boulder, a horrible crime was committed." << endl;
+  // cout << "The suspects of this crime could be anyone, anywhere, or anything." << endl;
+  // cout << "It's your job to journey through the campus and use clues to determine which suspects";
+  // cout << " are eliminated and which are the potential criminals." << endl;
+  // cout << "By playing against the computer, you will solve this murder mystery by making suggestions along";
+  // cout << " the way to help your elimination, and make a final accusation if you think you have uncovered the culprit." << endl;
+  // cout << "                  It's time to start the game... " << endl;
+  // cout << "---------------------------------------------------------------" << endl;
+  // cout << "         Good Luck, and may the best detective win!" << endl;
+  // int currTurn = 0;
+  // int numOfPlayers = 2;
+  // while(isRunning)
+  // {
+  //   currTurn = currTurn % numOfPlayers;
+  //   humanTurnOut = players[currTurn].ChooseTurn();
+  //
+  //   if(humanTurnOut.find(gameSuggest) != npos) //npos means greatest length of string
+  //   {
+  //     //Suggestion
+  //     split(humanTurnOut, ',', arr, 4);
+  //     if(currTurn == 0)
+  //     {
+  //       Card *c = computerRevealCard(arr[1], arr[2], arr[3]);
+  //     }
+  //     else
+  //     {
+  //       Card *c = humanRevealCard(arr[1], arr[2], arr[3]);
+  //     }
+  //     duplicateCard(c, players[currTurn]);
+  //     currTurn++;
+  //     computerTurnOut = players[currTurn].ChooseTurn();//switch players
+  //   }
+  //   else if(humanTurnOut.find(gameAccuse) != npos)
+  //   {
+  //     //Final Accusation
+        // if(cc.checkEnvelope(weapon, suspect, room))
+        // {
+        //   cout << "Congratulations, you have successfully solved the mystery! Great job detective!" << endl;
+        // }
+        // else
+        // {
+        //   cout << "Sorry! You have not accurately uncovered the suspects of this mystery. Better luck next time!" << endl;
+        // }
+  //     cout << "The correct details to this mystery were: " << endl;
+  //     cc.envelope.printTable();
+  //     isRunning = false;
+  //   }
+  //   else if(humanTurnOut == "Quit Turn")
+  //   {
+  //     //Quit Turn
+  //     computerTurnOut = players[1].ChooseTurn(players[0].aTable); //switch players
+  //   }
+  //   else
+  //   {
+  //     //Quit Game
+  //     cout << "You have quit the game." << endl;
+  //     isRunning = false;
+  //   }
+  //   currTurn++;
+  // }
 }
