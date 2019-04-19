@@ -9,12 +9,13 @@ using namespace std;
 class ClueCard{
     private:
         ClueCard cc;
-        Player players[3];
+        Player players[2];
 
     public:
+        void initializePlayersArray();
         void distributeCards();
         void duplicateCard(int key, string name);
-        void initializePlayersArray();
+        Card* revealCard(string weapon, string suspect, string room);
         void startGame();
 };
 
