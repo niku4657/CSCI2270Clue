@@ -9,14 +9,15 @@ string Human::ChooseTurn()
   string quitTurn;
   string quitGame;
   int roll = Dice();
-  cout << "You rolled a " << roll << endl;
+  cout << "You rolled a " << roll << "!" << endl;
   cout << "Main Menu" << endl;
+  cout << "--------------------" << endl;
   cout << "1. Suggest" << endl;
   cout << "2. Final Accusation" << endl;
   cout << "3. Quit Turn" << endl;
   cout << "4. Quit Game" << endl;
 
-  cout << "Please pick one of the options above." << endl;
+  cout << "Pick one of the options above." << endl;
   getline(cin, option);
 
   if (option == 1)
@@ -31,13 +32,13 @@ string Human::ChooseTurn()
   }
   else if (option == 3)
   {
-    cout << "You have quit your turn." << endl;
+    cout << "You have chosen to quit your turn. The computer will now proceed with their turn." << endl;
     quitTurn = "Quit Turn";
     return quitTurn;
   }
   else if(option == 4)
   {
-    cout << "You have quit the game." << endl;
+    cout << "You have chosen to quit the game. Goodbye!" << endl;
     quitGame = "Quit Game";
     return quitGame;
   }
@@ -47,6 +48,8 @@ string Human::ChooseTurn()
 void Human::printCards()
 {
   cout << "YOUR CARDS" << endl;
+  cout << "* Reference these cards to make future suggestions";
+  cout << " about what evidence is eliminated and which could be solution to the mystery *" << endl;
   hTable.printTable();
 }
 
@@ -58,16 +61,17 @@ string Human::Suggest(int roll)
 
   if (roll == 1 || roll == 3 || roll == 5)
   {
-    cout << "You can enter a room, choose from the following:"
+    cout << "Your roll has landed you in a room! Choose from the following:"
     cout << "UMC" << endl;
     cout << "Farrand Field" << endl;
     cout << "CSEL" << endl;
-    cout << "Kittredge Central" << endl;
+    cout << "Kittredge" << endl;
     cout << "Folsom Field" << endl;
     cout << "C4C" << endl;
+
     getline(cin, room);
 
-    cout << "You have made it into the " << room << endl;
+    cout << "You have made it into the " << room << "." << endl;
     cout << "You can now make a suggestion of who you think committed the murder" << endl;
 
     cout << "Your Suggestion:" << endl;
@@ -87,7 +91,7 @@ string Human::Suggest(int roll)
   }
   else
   {
-    cout << "You can't enter a room, it is now the computer's turn.";
+    cout << "Your roll has not landed you in a room, so it is now the computer's turn.";
     cout << endl;
     return "";
   }
@@ -99,7 +103,12 @@ string Human::FinalAccusation()
   string suspect;
   string weapon;
 
+  cout << "You have chosen to make a final accusation for the remaining suspects." << endl;
+  cout << "Choose your suspects wisely! If you are inaccurate, you will lose the game." << endl;
+  cout << endl << endl;
+
   cout << "Your Final Accusation:" << endl;
+  cout << "----------------------" << endl;
 
   cout << "Weapon";
   getline(cin, weapon);
@@ -115,14 +124,14 @@ string Human::FinalAccusation()
 
   if(checkEnvelope(weapon, suspect, room, h))
   {
-    cout << "Congratulations you won the game!!!!" << endl;
+    cout << "Congratulations, you have successfully solved the mystery! Great job detective!" << endl;
   }
   else
   {
-    cout << "You lost the game..." << endl;
+    cout << "Sorry! You have not accurately uncovered the suspects of this mystery. Better luck next time!" << endl;
   }
 
-  cout << "The correct answer is:" << endl;
+  cout << "The correct details to this mystery were: " << endl;
   h.printTable();
   return "Final Accusation";
 }

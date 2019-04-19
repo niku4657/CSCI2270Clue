@@ -41,12 +41,12 @@ Card* humanRevealCard(string weapon, string suspect, string room)
 
 	if(w == NULL && s == NULL && r == NULL)
 	{
-		cout << "You have no cards to dispute that suggestion." << endl;
+		cout << "You have no cards to dispute the computer's suggestion." << endl;
 	}
 
 	if(w != NULL || s != NULL || r != NULL)
 	{
-		cout << "Please choose a card to dispute the suggestion:" << endl;
+		cout << "Please choose a card to dispute the computer's suggestion:" << endl;
 
     if(w != NULL)
     {
@@ -91,7 +91,7 @@ Card* computerRevealCard(string weapon, string suspect, string room)
 
 	if(w == NULL && s == NULL && r == NULL)
 	{
-    cout << "The computer has no cards that dispute the suggestion" << endl;
+    cout << "The computer has no cards that dispute the human's suggestion." << endl;
     return "";
 	}
 
@@ -283,7 +283,17 @@ void startGame()
   cc.distributeCards();
 
   //Game Start
-  cout << "Game Intro" << endl;
+  cout << "                  Welcome to the Game of Clue!" << endl;
+  cout << "---------------------------------------------------------------" << endl;
+  cout << "Somewhere on the vast campus of University of Colorado Boulder, a horrible crime was committed." << endl;
+  cout << "The suspects of this crime could be anyone, anywhere, or anything." << endl;
+  cout << "It's your job to journey through the campus and use clues to determine which suspects";
+  cout << " are eliminated and which are the potential criminals." << endl;
+  cout << "By playing against the computer, you will solve this murder mystery by making suggestions along";
+  cout << " the way to help your elimination, and make a final accusation if you think you have uncovered the culprit." << endl;
+  cout << "                  It's time to start the game... " << endl;
+  cout << "---------------------------------------------------------------" << endl;
+  cout << "         Good Luck, and may the best detective win!" << endl;
   //int moveToNext
   while(isRunning)
   {
@@ -312,7 +322,7 @@ void startGame()
     else
     {
       //Quit Game
-      cout << "You quit the game." << endl;
+      cout << "You have quit the game." << endl;
       isRunning = false;
     }
   }
