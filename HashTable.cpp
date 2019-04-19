@@ -58,7 +58,7 @@ bool HashTable::insertItem(int key, string name)
 
         if (temp == NULL)
         {
-            table[index] = createCard(key, temp, NULL);
+            table[index] = createCard(key, name, NULL);
             return true;
         }
         while (temp->next != NULL)

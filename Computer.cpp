@@ -4,7 +4,12 @@
 #include "Player.hpp"
 using namespace std;
 
-string ChooseTurn()
+Computer::Computer()
+{
+  //Leave empty.
+}
+
+string Computer::ChooseTurn()
 {
   int computerTurn;
   string compResult;
@@ -36,12 +41,12 @@ string ChooseTurn()
   }
 }
 
-int Dice()
+int Computer::Dice()
 {
 	return rand() % 6 + 1; //Random from 1 to 6 is returned.
 }
 
-void printCards(){
+void Computer::printCards(){
   aTable -> printTable();
   pTable -> printTable();
 }
@@ -80,7 +85,7 @@ string Computer::weaponHelper(){
   return computerSuggestWeapon;
 }
 
-string Suggest(int roll){
+string Computer::Suggest(int roll){
   //After the dice roll
   string computerRoomChoice;
   string computerSuggestRoom;
@@ -147,7 +152,7 @@ string Suggest(int roll){
   }
 }
 
-string FinalAccusation()
+string Computer::FinalAccusation()
 {
   return "Final Accusation";
 }
