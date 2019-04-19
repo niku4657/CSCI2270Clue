@@ -134,5 +134,7 @@ string Human::FinalAccusation()
   getline(cin, room);
   cout << endl;
 
-  return "Final Accusation";
+  string finalResult = "Final Accusation: " + weapon + ", " + suspect + ", " + room;
+
+  return finalResult;
 }

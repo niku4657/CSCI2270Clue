@@ -85,12 +85,11 @@ string Computer::weaponHelper(){
   return computerSuggestWeapon;
 }
 
-string Computer::Suggest(int roll){
-  //After the dice roll
-  string computerRoomChoice;
-  string computerSuggestRoom;
-  string computerSuggestSuspect;
-  string computerSuggestWeapon;
+string Computer::Suggest(int roll)
+{
+  string weapon;
+  string suspect;
+  string room;
   int computerDice;
 
   if (roll == 1 || roll == 3 || roll == 5)
@@ -108,41 +107,41 @@ string Computer::Suggest(int roll){
     switch(computerDice)
     {
       case 1:
-        computerSuggestRoom = "UMC";
+        room = "UMC";
       break;
 
       case 2:
-        computerSuggestRoom = "Farrand Field";
+        room = "Farrand Field";
       break;
 
       case 3:
-        computerSuggestRoom = "CSEL";
+        room = "CSEL";
       break;
 
       case 4:
-        computerSuggestRoom = "Kittredge";
+        room = "Kittredge";
       break;
 
       case 5:
-        computerSuggestRoom = "Folsom Field";
+        room = "Folsom Field";
       break;
 
       case 6:
-        computerSuggestRoom = "C4C";
+        room = "C4C";
       break;
     }
 
-    cout << "The computer has made it into the " << computerSuggestRoom << endl;
+    cout << "The computer has made it into the " << room << endl;
     cout << "The computer will now make a suggestion as to who it thinks committed the murder" << endl;
 
     cout << "Computer's Suggestion:" << endl;
-    cout << "Room: " << computerSuggestRoom << endl;
-    computerSuggestSuspect = suspectHelper();
-    cout << "Suspect: " << computerSuggestSuspect << endl;
-    computerSuggestWeapon = weaponHelper();
-    cout << "Weapon: " << computerSuggestWeapon << endl;
+    cout << "Room: " << room << endl;
+    suspect = suspectHelper();
+    cout << "Suspect: " << suspect << endl;
+    weapon = weaponHelper();
+    cout << "Weapon: " << weapon << endl;
 
-    string compSuggest = computerSuggestWeapon + ", " + computerSuggestSuspect + ", " + computerSuggestRoom;
+    string compSuggest = "Suggest: " + weapon + ", " + suspect + ", " + room;
 
     return compSuggest;
   }
@@ -152,7 +151,162 @@ string Computer::Suggest(int roll){
   }
 }
 
+string finalWeapon()
+{
+  int computerDice = rand() % 6 + 1;
+  string weapon;
+
+  switch(computerDice)
+  {
+    case 1:
+      weapon = "C4C Food";
+    break;
+
+    case 2:
+      weapon = "Ralphie's Horn";
+    break;
+
+    case 3:
+      weapon = "CSCI 2270 Midterm 2";
+    break;
+
+    case 4:
+      weapon = "Dean's List";
+    break;
+
+    case 5:
+      weapon = "Flu from the Dorms";
+    break;
+
+    case 6:
+      weapon = "Freshmen Ego";
+    break;
+  }
+
+  return weapon;
+}
+
+string finalSuspect()
+{
+  int computerDice = rand() % 6 + 1;
+  string suspect;
+
+  switch(computerDice)
+  {
+    case 1:
+      suspect = "Ralphie";
+    break;
+
+    case 2:
+      suspect = "Chip the Buffalo";
+    break;
+
+    case 3:
+      suspect = "Mr. Gold";
+    break;
+
+    case 4:
+      suspect = "Ms. Black";
+    break;
+
+    case 5:
+      suspect = "Prashil";
+    break;
+
+    case 6:
+      suspect = "Tanvi";
+    break;
+  }
+
+  return suspect;
+}
+
+string finalRoom()
+{
+  int computerDice = rand() % 6 + 1;
+  string room;
+
+  switch(computerDice)
+  {
+    case 1:
+      room = "UMC";
+    break;
+
+    case 2:
+      room = "Farrand Field";
+    break;
+
+    case 3:
+      room = "CSEL";
+    break;
+
+    case 4:
+      room = "Kittredge";
+    break;
+
+    case 5:
+      room = "Folsom Field";
+    break;
+
+    case 6:
+      room = "C4C";
+    break;
+  }
+
+  return room;
+}
+
 string Computer::FinalAccusation()
 {
-  return "Final Accusation";
+  string weapon;
+  string suspect;
+  string room;
+  bool checkWeapon = true;
+  bool checkSuspect = true;
+  bool checkRoom = true;
+
+  cout << "The computer has made it into the " << room << "." << endl;
+  cout << "The computer will now make a final accusation as to who it thinks committed the murder." << endl;
+
+  while(checkWeapon == true)
+  {
+    weapon = finalWeapon();
+    checkWeapon = aTable -> searchItem(0, weapon);
+
+    if(checkWeapon == NULL)
+    {
+      pTable -> searchItem(0, weapon);
+    }
+  }
+
+  while(checkSuspect == true)
+  {
+    suspect = finalSuspect();
+    checkWeapon = aTable -> searchItem(6, suspect);
+
+    if(checkWeapon == NULL)
+    {
+      pTable -> searchItem(6, suspect);
+    }
+  }
+
+  while(checkWeapon == true)
+  {
+    room = finalRoom();
+    checkWeapon = aTable -> searchItem(12, suspect);
+
+    if(checkWeapon == NULL)
+    {
+      pTable -> searchItem(12, suspect);
+    }
+  }
+
+  cout << "Computer's Accusation:" << endl;
+  cout << "Room: " << room << endl;
+  cout << "Suspect: " << suspect << endl;
+  cout << "Weapon: " << weapon << endl;
+
+  string compSuggest = "Final Accusation: " + weapon + ", " + suspect + ", " + room;
+
+  return compSuggest;
 }
