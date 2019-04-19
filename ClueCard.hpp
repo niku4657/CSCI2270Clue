@@ -7,14 +7,14 @@ using namespace std;
 
 class ClueCard
 {
-    private:
+    public:
         Card weapon[6];
         Card suspect[6];
         Card room[6];
-        HashTable envelope;
-        Card allCards[];
-
-    public:
+        HashTable *envelope;
+        Card allCards[18];
+        ClueCard();
+        ~ClueCard();
         void addCardArray(Card cards[], int key, string name);
         void fillInWeapons();
         void fillInSuspects();
@@ -22,6 +22,7 @@ class ClueCard
         void shuffleCards();
         void fillInRooms();
         void mergeArrays();
+        bool checkEnvelope(string weapon, string suspect, string room);
 };
 
 #endif

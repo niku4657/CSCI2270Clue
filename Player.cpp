@@ -7,14 +7,14 @@ Player::Player()
   //Leave empty.
 }
 
-int Player::ChooseTurn()
+string Player::ChooseTurn()
 {
   //Leave empty.
 }
 
 int Player::Dice()
 {
-	return random() % 6 + 1; //Random from 1 to 6 is returned.
+	//Leave empty.
 }
 
 void Player::printCards()
@@ -22,29 +22,12 @@ void Player::printCards()
   //Leave empty.
 }
 
-void Player::Suggest()
+string Player::Suggest(int roll)
 {
   //Leave empty.
 }
 
-bool Player::checkEnvelope(string weapon, string suspect, string room)
-{
-	Card *w = h.searchItem(0, weapon);
-	Card *s = h.searchItem(6, suspect);
-	Card *r = h.searchItem(12, room);
-
-	if(w == NULL || s == NULL || r == NULL)
-	{
-		return false;
-	}
-
-	if(w != NULL && s != NULL && r != NULL)
-	{
-		return true;
-	}
-}
-
-void Player::FinalAccusation()
+string Player::FinalAccusation()
 {
   //Leave empty.
 }

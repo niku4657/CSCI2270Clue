@@ -3,11 +3,6 @@
 #include "HashTable.hpp"
 using namespace std;
 
-int HashTable::getKey()
-{
-  return key;
-}
-
 // function to display hash table
 void HashTable::printTable()
 {
@@ -19,9 +14,9 @@ void HashTable::printTable()
         while (temp != NULL)
         {
             cout << "CARD" << endl;
-            cout << convertKey(temp -> key) << endl;
+            cout << temp -> key << ": ";
             cout << temp -> name << endl;
-            temp = temp->next;
+            temp = temp -> next;
         }
         cout << endl;
     }
@@ -37,11 +32,10 @@ Card* HashTable::createCard(int key, string name, Card* next)
     return nw;
 }
 
-HashTable::HashTable(int bsize)
+HashTable::HashTable()
 {
-    //this->tableSize= bsize;
     table = new Card*[tableSize];
-    for(int i=0;i<bsize;i++)
+    for(int i=0;i<tableSize;i++)
         table[i] = nullptr;
 }
 
@@ -111,6 +105,7 @@ Card* HashTable::searchItem(int key)
     while (temp != NULL)
     {
         if (temp -> key == key) return temp;
-
+        temp = temp -> next;
+    }
     return NULL;
 }

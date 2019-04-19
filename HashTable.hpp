@@ -16,7 +16,7 @@ struct Card
 
 class HashTable
 {
-    int tableSize = 3;  // No. of buckets (linked lists)
+    int tableSize = 18;  // No. of buckets (linked lists)
 
     // Pointer to an array containing buckets
     Card* *table;
@@ -24,8 +24,6 @@ class HashTable
     Card* createCard(int key, string name, Card* next);
 public:
     HashTable();  // Constructor
-
-    int getKey();
 
     //void showCard(int key, string name); // Person A's card inserted into Person B's
 

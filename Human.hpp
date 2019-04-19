@@ -3,15 +3,16 @@
 #include <cstring>
 #include <iostream>
 #include <string>
+#include "Player.hpp"
 using namespace std;
 
 class Human : public Player
 {
-  private:
-    HashTable *hTable;
-    HashTable *phTable;
-
   public:
+    HashTable *aTable;
+    HashTable *pTable;
+    //Constructor
+    Human();
     //Choose from menu to roll, suggest, and make final accusation.
     string ChooseTurn();
     //Roll Function
@@ -20,8 +21,6 @@ class Human : public Player
     void printCards();
     //Suggest Function
     string Suggest(int roll);
-    //Helper for Final Accuation
-    bool checkEnvelope(string weapon, string suspect, string room);
     //Final Accusation
     string FinalAccusation();
 };
