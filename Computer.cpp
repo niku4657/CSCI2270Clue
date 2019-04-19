@@ -7,10 +7,10 @@ string Computer::ChooseTurn(){
   int computerTurn;
   string compResult;
   cout << "Main Menu" << endl;
+  cout << "--------------------" << endl;
   cout << "1. Suggest" << endl;
   cout << "2. Final Accusation" << endl;
   cout << "3. Quit Turn" << endl;
-
   //random function between 1 - 3
   computerTurn = rand() % 4 + 1;
 
@@ -26,7 +26,7 @@ string Computer::ChooseTurn(){
   }
   else if (computerTurn == 3)
   {
-    cout << "The computer has quit its turn" << endl; //Switch turn in int main
+    cout << "The computer has quit its turn. It is now the human's turn." << endl; //Switch turn in int main
     return "Quit Turn";
   }
 }
@@ -78,11 +78,11 @@ string Computer::Suggest(int roll){
 
   if (roll == 1 || roll == 3 || roll == 5)
   {
-    cout << "The computer will now choose a room to go into" << endl;
+    cout << "The computer will now choose a room to go into." << endl;
     cout << "UMC" << endl;
     cout << "Farrand Field" << endl;
     cout << "CSEL" << endl;
-    cout << "Kittredge Central" << endl;
+    cout << "Kittredge" << endl;
     cout << "Folsom Field" << endl;
     cout << "C4C" << endl;
 
@@ -116,7 +116,7 @@ string Computer::Suggest(int roll){
     }
 
     cout << "The computer has made it into the " << computerSuggestRoom << endl;
-    cout << "The computer will now make a suggestion as to who committed the murder" << endl;
+    cout << "The computer will now make a suggestion as to who it thinks committed the murder" << endl;
 
     cout << "Computer's Suggestion:" << endl;
     cout << "Room: " << computerSuggestRoom << endl;
@@ -145,15 +145,15 @@ string Computer::FinalAccusation(){
   //if all cards are found
   if (inEnvelope == true)
   {
-    cout << "Congratulations! You successfully uncovered the details of the murder!" << endl;
+    cout << "You lost! The computer successfully uncovered the details of the murder." << endl;
   }
   else
   {
     //if none are found or at least one doesn't match
-    cout << "Sorry! You didn't accurately solve the murder mystery." << endl;
+    cout << "The computer didn't accurately solve the murder mystery. " << endl;
   }
 
-  cout << "The correct answer is:" << endl;
+  cout << "The correct details to this mystery were: " << endl;
   h.printTable();
   return "";
 }
