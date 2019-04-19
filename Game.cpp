@@ -265,7 +265,6 @@ Card* computerRevealCard(string weapon, string suspect, string room)
 void startGame()
 {
   //Game Setup
-  ClueCard cc;
   bool isRunning = true;
   //int humanTurnOut;
   string humanTurnOut;
@@ -311,7 +310,6 @@ void startGame()
     else if(humanTurnOut.find(gameAccuse) != npos)
     {
       //Final Accusation
-      //Nothing to be called but must fix check envelope parameters
       isRunning = false;
     }
     else if(humanTurnOut == quitTurn)
