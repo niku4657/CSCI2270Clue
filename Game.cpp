@@ -7,20 +7,15 @@ void Game::distributeCards(){
   // merge arrays into one array
   cc.mergeArrays();
   // create 3 for loops
-  for (int i = 0; i < 15; i + 3){
+  for (int i = 0; i < 15; i + 2){
     Card* card = new Card;
     card = cc.allCards[i];
     players[0].aTable.insertItem(card->key, card->name);
   }
-  for (int i = 1; i < 15; i + 3){
+  for (int i = 1; i < 15; i + 2){
     Card* nextCard = new Card;
     card = cc.allCards[i];
     players[1].aTable.insertItem(card->key, card->name);
-  }
-  for (int i = 2; i < 15; i + 3){
-    Card* thirdCard = new Card;
-    card = cc.allCards[i];
-    player[2].aTable.insertItem(card->key, card->name);
   }
   //Use cc.allCards[] and distribute into players' hashtables using players[]!!
 }
