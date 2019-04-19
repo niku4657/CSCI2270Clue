@@ -122,7 +122,7 @@ string Human::FinalAccusation()
   getline(cin, room);
   cout << endl;
 
-  if(checkEnvelope(weapon, suspect, room, h))
+  if(checkEnvelope(weapon, suspect, room))
   {
     cout << "Congratulations, you have successfully solved the mystery! Great job detective!" << endl;
   }

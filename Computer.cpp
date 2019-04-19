@@ -141,7 +141,7 @@ string Computer::FinalAccusation(){
   RandomSuggest(); //Basically make a Suggestion
 
   //search envelope hash table -->helper function called checkEnvelopeComputer
-  inEnvelope = checkEnvelope(computerSuggestWeapon, computerSuggestSuspect, computerSuggestRoom, h);
+  inEnvelope = checkEnvelope(computerSuggestWeapon, computerSuggestSuspect, computerSuggestRoom);
   //if all cards are found
   if (inEnvelope == true)
   {
