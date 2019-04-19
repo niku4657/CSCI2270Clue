@@ -10,6 +10,7 @@ string Human::ChooseTurn()
   string quitGame;
   int roll = Dice();
   cout << "You rolled a " << roll << "!" << endl;
+  printCards();
   cout << "Main Menu" << endl;
   cout << "--------------------" << endl;
   cout << "1. Suggest" << endl;
@@ -22,12 +23,12 @@ string Human::ChooseTurn()
 
   if (option == 1)
   {
-    turnResult = Suggest(roll, h);
+    turnResult = Suggest(roll);
     return turnResult;
   }
   else if (option == 2)
   {
-    turnResult = FinalAccusation(h);
+    turnResult = FinalAccusation();
     return turnResult;
   }
   else if (option == 3)
@@ -130,8 +131,6 @@ string Human::FinalAccusation()
   {
     cout << "Sorry! You have not accurately uncovered the suspects of this mystery. Better luck next time!" << endl;
   }
-
-  cout << "The correct details to this mystery were: " << endl;
-  h.printTable();
+  
   return "Final Accusation";
 }

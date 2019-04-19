@@ -7,7 +7,7 @@ Player::Player()
   //Leave empty.
 }
 
-int Player::ChooseTurn(HashTable h)
+int Player::ChooseTurn()
 {
   //Leave empty.
 }
@@ -27,7 +27,7 @@ void Player::Suggest()
   //Leave empty.
 }
 
-bool Player::checkEnvelope(string weapon, string suspect, string room, HashTable h)
+bool Player::checkEnvelope(string weapon, string suspect, string room)
 {
 	Card *w = h.searchItem(0, weapon);
 	Card *s = h.searchItem(6, suspect);
@@ -47,9 +47,4 @@ bool Player::checkEnvelope(string weapon, string suspect, string room, HashTable
 void Player::FinalAccusation()
 {
   //Leave empty.
-}
-
-string Player::revealCard(string weapon, string suspect, string room)
-{
-	//Leave empty.
 }

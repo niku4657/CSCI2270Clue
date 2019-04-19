@@ -6,6 +6,9 @@ using namespace std;
 string Computer::ChooseTurn(){
   int computerTurn;
   string compResult;
+  int roll = Dice();
+  cout << "You rolled a " << roll << "!" << endl;
+  printCards();
   cout << "Main Menu" << endl;
   cout << "--------------------" << endl;
   cout << "1. Suggest" << endl;
@@ -16,7 +19,7 @@ string Computer::ChooseTurn(){
 
   if (computerTurn == 1)
   {
-    compResult = Suggest();
+    compResult = Suggest(roll);
     return compResult;
   }
   else if (computerTurn == 2)

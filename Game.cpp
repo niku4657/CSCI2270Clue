@@ -3,6 +3,12 @@
 #include "Game.hpp"
 using namespace std;
 
+void Game::initializePlayersArray()
+{
+  players[0] = new Human;
+  players[1] = new Computer;
+}
+
 void Game::distributeCards(){
   // distribute Cards from array of cards to individual player hash tables
   // merge arrays into one array
@@ -24,12 +30,6 @@ void Game::distributeCards(){
 void Game::duplicateCard(Card* card, Player p)
 {
   p.aTable.insertItem(card->key, card->name);
-}
-
-void Game::initializePlayersArray()
-{
-  players[0] = new Human;
-  players[1] = new Computer;
 }
 
 Card* humanRevealCard(string weapon, string suspect, string room)
@@ -262,15 +262,43 @@ Card* computerRevealCard(string weapon, string suspect, string room)
 	}
 }
 
+int split(string str, char c, string array[], int size)
+{
+    if(str.length() == 0)
+    {
+         return 0;
+    }
+
+    string word = "";
+    int count = 0;
+    str = str + c;
+
+    for (int i = 0; i < str.length(); i++)
+    {
+        if (str[i] == c)
+        {
+            if (word.length() == 0)
+                continue;
+            array[count++] = word;
+            word = "";
+        }
+        else
+        {
+            word = word + str[i];
+        }
+    }
+
+    return count;
+}
+
 void startGame()
 {
   //Game Setup
   bool isRunning = true;
-  //int humanTurnOut;
+  string arr[4];
   string humanTurnOut;
   string gameSuggest = "Suggest";
   string gameAccuse = "Final Accusation";
-  //int computerTurnOut;
   string computerTurnOut;
 
   cc.initializePlayersArray();
@@ -296,26 +324,27 @@ void startGame()
   //int moveToNext
   while(isRunning)
   {
-    humanTurnOut = cc.players[0].ChooseTurn(players[1].aTable);
+    humanTurnOut = players[0].ChooseTurn(players[1].aTable);
 
     if(humanTurnOut.find(gameSuggest) != npos) //npos means greatest length of string
     {
       //Suggestion
-      //Call human suggestion function - which returns w s r
-      //create split function that will split the long string
-      //call computer revealCard function - which returns a card
-      //call duplicateCard function with that returned card
-      computerTurnOut = cc.players[1].ChooseTurn(players[0].aTable);//switch players
+      split(humanTurnOut, ',', arr, 4);
+      Card *c = computerRevealCard(arr[1], arr[2], arr[3]);
+      duplicateCard(c, players[0]);
+      computerTurnOut = players[1].ChooseTurn(players[0].aTable);//switch players
     }
     else if(humanTurnOut.find(gameAccuse) != npos)
     {
       //Final Accusation
+      cout << "The correct details to this mystery were: " << endl;
+      cc.envelope.printTable();
       isRunning = false;
     }
-    else if(humanTurnOut == quitTurn)
+    else if(humanTurnOut == "Quit Turn")
     {
       //Quit Turn
-      computerTurnOut = cc.players[1].ChooseTurn(players[0].aTable); //switch players
+      computerTurnOut = players[1].ChooseTurn(players[0].aTable); //switch players
     }
     else
     {

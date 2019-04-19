@@ -11,7 +11,7 @@ class ClueCard
         Card weapon[6];
         Card suspect[6];
         Card room[6];
-        HashTable envelope();
+        HashTable envelope;
         Card allCards[];
 
     public:
