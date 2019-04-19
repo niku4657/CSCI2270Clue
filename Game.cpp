@@ -294,22 +294,25 @@ void startGame()
       //Suggestion
       //Call human suggestion function - which returns w s r
       //create split function that will split the long string
-      //call computer revealCard function
+      //call computer revealCard function - which returns a card
+      //call duplicateCard function with that returned card
       computerTurnOut = cc.players[1].ChooseTurn(players[0].aTable);//switch players
     }
     else if(humanTurnOut.find(gameAccuse) != npos)
     {
       //Final Accusation
+      //Nothing to be called but must fix check envelope parameters
       isRunning = false;
     }
     else if(humanTurnOut == quitTurn)
     {
       //Quit Turn
-      computerTurnOut = cc.players[1].ChooseTurn(players[0].aTable);
+      computerTurnOut = cc.players[1].ChooseTurn(players[0].aTable); //switch players
     }
     else
     {
       //Quit Game
+      cout << "You quit the game." << endl;
       isRunning = false;
     }
   }
