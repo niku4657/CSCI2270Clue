@@ -391,8 +391,11 @@ void Game::startGame()
       {
         cout << "Sorry! You have not accurately uncovered the suspects of this mystery. Better luck next time!" << endl;
       }
+
       cout << "The correct details to this mystery were: " << endl;
+
       cc.envelope -> printTable();
+
       isRunning = false;
     }
     else if(humanTurnOut == "Quit Turn")
@@ -408,4 +411,6 @@ void Game::startGame()
       isRunning = false;
     }
   }
+
+  cout << "THE MURDERER GOT TO YOU." << endl;
 }
