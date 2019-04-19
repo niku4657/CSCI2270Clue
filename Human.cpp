@@ -2,6 +2,11 @@
 #include "Human.hpp"
 using namespace std;
 
+Human::Human()
+{
+  //Leave empty.
+}
+
 string Human::ChooseTurn()
 {
   string option;

@@ -4,6 +4,9 @@
 #include <string>
 #include "ClueCard.hpp"
 #include "Player.hpp"
+#include "Computer.hpp"
+#include "Human.hpp"
+
 using namespace std;
 
 class Game
