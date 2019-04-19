@@ -53,12 +53,12 @@ void Game::duplicateCard(Card* card, Player* p)
   p -> pTable -> insertItem(card -> key, card -> name);
 }
 
-Card* Game::humanRevealCard(string weapon, string suspect, string room)
+Card* Game::humanRevealCard(string weapon, string suspect, string room, int num)
 {
   string card = "";
-  Card *w = players[1] -> pTable -> searchItem(0, weapon);
-  Card *s = players[1] -> pTable -> searchItem(6, suspect);
-  Card *r = players[1] -> pTable -> searchItem(12, room);
+  Card *w = players[num] -> pTable -> searchItem(0, weapon);
+  Card *s = players[num] -> pTable -> searchItem(6, suspect);
+  Card *r = players[num] -> pTable -> searchItem(12, room);
 
 	if(w == NULL && s == NULL && r == NULL)
 	{
@@ -103,12 +103,12 @@ Card* Game::humanRevealCard(string weapon, string suspect, string room)
   return NULL;
 }
 
-Card* Game::computerRevealCard(string weapon, string suspect, string room)
+Card* Game::computerRevealCard(string weapon, string suspect, string room, int num)
 {
   int randReveal;
-  Card *w = players[0] -> pTable -> searchItem(0, weapon);
-  Card *s = players[0] -> pTable -> searchItem(6, suspect);
-  Card *r = players[0] -> pTable -> searchItem(12, room);
+  Card *w = players[num] -> pTable -> searchItem(0, weapon);
+  Card *s = players[num] -> pTable -> searchItem(6, suspect);
+  Card *r = players[num] -> pTable -> searchItem(12, room);
 
 	if(w == NULL && s == NULL && r == NULL)
 	{
@@ -355,11 +355,11 @@ void Game::startGame()
       split(humanTurnOut, ',', arr, 4);
       if(currTurn == 0)
       {
-        c = computerRevealCard(arr[1], arr[2], arr[3]);
+        c = computerRevealCard(arr[1], arr[2], arr[3], currTurn);
       }
       else
       {
-        c = humanRevealCard(arr[1], arr[2], arr[3]);
+        c = humanRevealCard(arr[1], arr[2], arr[3], currTurn);
       }
       duplicateCard(c, players[currTurn]);
       currTurn++;

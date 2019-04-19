@@ -270,8 +270,13 @@ string Computer::FinalAccusation()
 
   while(checkWeapon == true)
   {
-    weapon = finalWeapon();
+    weapon = finalWeapon(); // gives a random weapon
     checkWeapon = aTable -> searchItem(0, weapon);
+
+    if (checkWeapon == false)
+    {
+      checkWeapon = pTable -> searchItem(0, weapon);
+    }
 
     if(checkWeapon == NULL)
     {
