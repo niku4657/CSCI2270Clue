@@ -322,9 +322,12 @@ void startGame()
   cout << "---------------------------------------------------------------" << endl;
   cout << "         Good Luck, and may the best detective win!" << endl;
   //int moveToNext
+  int currTurn=0;
+  int numOfPlayers=2;
   while(isRunning)
   {
-    humanTurnOut = players[0].ChooseTurn(players[1].aTable);
+    currTurn=currTurn%numOfPlayers;
+    humanTurnOut = players[currTurn].ChooseTurn(players[1].aTable);
 
     if(humanTurnOut.find(gameSuggest) != npos) //npos means greatest length of string
     {
@@ -352,5 +355,6 @@ void startGame()
       cout << "You have quit the game." << endl;
       isRunning = false;
     }
+    currTurn++;
   }
 }
