@@ -322,6 +322,9 @@ void Game::startGame()
   string gameAccuse = "Final Accusation";
   string computerTurnOut;
   Card *c = new Card;
+  Card *c2 = new Card;
+  int currTurn = 0;
+  int numOfPlayers = 3;
 
   initializePlayersArray();
   cc.fillInWeapons();
@@ -342,8 +345,7 @@ void Game::startGame()
   cout << "                  It's time to start the game... " << endl;
   cout << "---------------------------------------------------------------" << endl;
   cout << "         Good Luck, and may the best detective win!" << endl;
-  int currTurn = 0;
-  int numOfPlayers = 2;
+
   while(isRunning)
   {
     currTurn = currTurn % numOfPlayers;
@@ -355,20 +357,32 @@ void Game::startGame()
       split(humanTurnOut, ',', arr, 4);
       if(currTurn == 0)
       {
-        c = computerRevealCard(arr[1], arr[2], arr[3], currTurn);
+        c = computerRevealCard(arr[1], arr[2], arr[3], currTurn++);
+        c2 = computerRevealCard(arr[1], arr[2], arr[3], currTurn + 2);
+      }
+      else if(currTurn == 1)
+      {
+        c2 = computerRevealCard(arr[1], arr[2], arr[3], currTurn++);
+        c = humanRevealCard(arr[1], arr[2], arr[3], currTurn + 2);
       }
       else
       {
-        c = humanRevealCard(arr[1], arr[2], arr[3], currTurn);
+        c = humanRevealCard(arr[1], arr[2], arr[3], currTurn++);
+        c2 = computerRevealCard(arr[1], arr[2], arr[3], currTurn + 2);
       }
+
       duplicateCard(c, players[currTurn]);
+      duplicateCard(c2, players[currTurn]);
+
+      //Switch Players
       currTurn++;
-      computerTurnOut = players[currTurn] -> ChooseTurn();//switch players
+      computerTurnOut = players[currTurn] -> ChooseTurn();
     }
     else if(humanTurnOut.find(gameAccuse) != string::npos)
     {
       //Final Accusation
       split(humanTurnOut, ',', arr, 4);
+
       if(cc.checkEnvelope(arr[1], arr[2], arr[3]))
       {
         cout << "Congratulations, you have successfully solved the mystery! Great job detective!" << endl;
@@ -384,7 +398,8 @@ void Game::startGame()
     else if(humanTurnOut == "Quit Turn")
     {
       //Quit Turn
-      computerTurnOut = players[1] -> ChooseTurn(); //switch players
+      currTurn++;
+      computerTurnOut = players[currTurn] -> ChooseTurn(); //switch players
     }
     else
     {
@@ -392,6 +407,5 @@ void Game::startGame()
       cout << "You have quit the game." << endl;
       isRunning = false;
     }
-    currTurn++;
   }
 }
