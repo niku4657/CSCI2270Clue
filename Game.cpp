@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include "Game.hpp"
 using namespace std;
 
@@ -42,8 +43,12 @@ void startGame()
   //Game Setup
   ClueCard cc;
   bool isRunning = true;
-  int humanTurnOut;
-  int computerTurnOut;
+  //int humanTurnOut;
+  string humanTurnOut;
+  string gameSuggest = "Suggest";
+  string gameAccuse = "Final Accusation";
+  //int computerTurnOut;
+  string computerTurnOut;
 
   cc.initializePlayersArray();
 
@@ -51,26 +56,29 @@ void startGame()
   cc.fillInSuspects();
   cc.fillInRooms();
   cc.shuffleCards();
-  cc.distrubuteCards();
+  cc.distributeCards();
 
   //Game Start
   cout << "Game Intro" << endl;
-int moveToNext
+  //int moveToNext
   while(isRunning)
   {
     humanTurnOut = cc.players[0].ChooseTurn(players[1].aTable);
 
-    if(humanTurnOut == 1)
+    if(humanTurnOut.find(gameSuggest) != npos) //npos means greatest length of string
     {
       //Suggestion
-      computerTurnOut = cc.players[1].ChooseTurn(players[0].aTable);
+      //Call human suggestion function - which returns w s r
+      //create split function that will split the long string
+      //call computer revealCard function
+      computerTurnOut = cc.players[1].ChooseTurn(players[0].aTable);//switch players
     }
-    else if(humanTurnOut == 2)
+    else if(humanTurnOut.find(gameAccuse) != npos)
     {
       //Final Accusation
       isRunning = false;
     }
-    else if(humanTurnOut == 3)
+    else if(humanTurnOut == quitTurn)
     {
       //Quit Turn
       computerTurnOut = cc.players[1].ChooseTurn(players[0].aTable);

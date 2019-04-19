@@ -6,6 +6,8 @@ string Human::ChooseTurn()
 {
   string option;
   string turnResult;
+  string quitTurn;
+  string quitGame;
   int roll = Dice();
   cout << "You rolled a " << roll << endl;
   cout << "Main Menu" << endl;
@@ -30,14 +32,15 @@ string Human::ChooseTurn()
   else if (option == 3)
   {
     cout << "You have quit your turn." << endl;
-    return "Quit Turn";
+    quitTurn = "Quit Turn";
+    return quitTurn;
   }
   else if(option == 4)
   {
     cout << "You have quit the game." << endl;
-    return "Quit Game";
+    quitGame = "Quit Game";
+    return quitGame;
   }
-
   return "";
 }
 
@@ -78,7 +81,7 @@ string Human::Suggest(int roll)
     getline(cin, weapon);
     cout << endl;
 
-    string suggestResult = weapon + ", " + suspect + ", " + room;
+    string suggestResult = "Suggest: " + weapon + ", " + suspect + ", " + room;
 
     return suggestResult;
   }
@@ -121,5 +124,5 @@ string Human::FinalAccusation()
 
   cout << "The correct answer is:" << endl;
   h.printTable();
-  return "";
+  return "Final Accusation";
 }
