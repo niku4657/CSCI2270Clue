@@ -14,8 +14,9 @@ class ClueCard{
     public:
         void initializePlayersArray();
         void distributeCards();
-        void duplicateCard(int key, string name);
-        Card* revealCard(string weapon, string suspect, string room);
+        void duplicateCard(Card* card, Player p);
+        Card* humanRevealCard(string weapon, string suspect, string room)
+        Card* computerRevealCard(string weapon, string suspect, string room)
         void startGame();
 };
 

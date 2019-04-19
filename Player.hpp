@@ -16,7 +16,7 @@ class Player
     //Constructor
     Player();
     //Choose from menu to roll, suggest, and make final accusation.
-    int ChooseTurn(HashTable h);
+    int ChooseTurn();
     //Roll Function
     int Dice();
     //Print out Cards
@@ -26,9 +26,7 @@ class Player
     //Helper for Final Accuation
     bool checkEnvelope(string weapon, string suspect, string room);
     //Final Accusation
-    void FinalAccusation(HashTable h);
-    //Reveal a Card
-    string revealCard(string weapon, string suspect, string room);
+    void FinalAccusation();
 };
 
 #endif
