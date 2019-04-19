@@ -18,7 +18,7 @@ class Game
         ~Game();
         void initializePlayersArray();
         void distributeCards();
-        void duplicateCard(Card* card, Player p);
+        void duplicateCard(Card* card, Player* p);
         Card* humanRevealCard(string weapon, string suspect, string room);
         Card* computerRevealCard(string weapon, string suspect, string room);
         void startGame();

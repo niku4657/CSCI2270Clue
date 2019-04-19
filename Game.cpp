@@ -48,9 +48,9 @@ void Game::distributeCards()
   }
 }
 
-void Game::duplicateCard(Card* card, Player p)
+void Game::duplicateCard(Card* card, Player* p)
 {
-  p.pTable -> insertItem(card -> key, card -> name);
+  p -> pTable -> insertItem(card -> key, card -> name);
 }
 
 Card* Game::humanRevealCard(string weapon, string suspect, string room)
@@ -321,14 +321,14 @@ void Game::startGame()
   string gameSuggest = "Suggest";
   string gameAccuse = "Final Accusation";
   string computerTurnOut;
+  Card *c = new Card;
 
-  cc.initializePlayersArray();
-
+  initializePlayersArray();
   cc.fillInWeapons();
   cc.fillInSuspects();
   cc.fillInRooms();
   cc.shuffleCards();
-  cc.distributeCards();
+  distributeCards();
 
   //Game Start
   cout << "                  Welcome to the Game of Clue!" << endl;
@@ -347,43 +347,44 @@ void Game::startGame()
   while(isRunning)
   {
     currTurn = currTurn % numOfPlayers;
-    humanTurnOut = players[currTurn].ChooseTurn();
+    humanTurnOut = players[currTurn] -> ChooseTurn();
 
-    if(humanTurnOut.find(gameSuggest) != npos) //npos means greatest length of string
+    if(humanTurnOut.find(gameSuggest) != string::npos) //npos means greatest length of string
     {
       //Suggestion
       split(humanTurnOut, ',', arr, 4);
       if(currTurn == 0)
       {
-        Card *c = computerRevealCard(arr[1], arr[2], arr[3]);
+        c = computerRevealCard(arr[1], arr[2], arr[3]);
       }
       else
       {
-        Card *c = humanRevealCard(arr[1], arr[2], arr[3]);
+        c = humanRevealCard(arr[1], arr[2], arr[3]);
       }
       duplicateCard(c, players[currTurn]);
       currTurn++;
-      computerTurnOut = players[currTurn].ChooseTurn();//switch players
+      computerTurnOut = players[currTurn] -> ChooseTurn();//switch players
     }
-    else if(humanTurnOut.find(gameAccuse) != npos)
+    else if(humanTurnOut.find(gameAccuse) != string::npos)
     {
       //Final Accusation
-        if(cc.checkEnvelope(weapon, suspect, room))
-        {
-          cout << "Congratulations, you have successfully solved the mystery! Great job detective!" << endl;
-        }
-        else
-        {
-          cout << "Sorry! You have not accurately uncovered the suspects of this mystery. Better luck next time!" << endl;
-        }
+      split(humanTurnOut, ',', arr, 4);
+      if(cc.checkEnvelope(arr[1], arr[2], arr[3]))
+      {
+        cout << "Congratulations, you have successfully solved the mystery! Great job detective!" << endl;
+      }
+      else
+      {
+        cout << "Sorry! You have not accurately uncovered the suspects of this mystery. Better luck next time!" << endl;
+      }
       cout << "The correct details to this mystery were: " << endl;
-      cc.envelope.printTable();
+      cc.envelope -> printTable();
       isRunning = false;
     }
     else if(humanTurnOut == "Quit Turn")
     {
       //Quit Turn
-      computerTurnOut = players[1].ChooseTurn(players[0].aTable); //switch players
+      computerTurnOut = players[1] -> ChooseTurn(); //switch players
     }
     else
     {
