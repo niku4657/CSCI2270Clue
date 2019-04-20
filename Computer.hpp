@@ -20,14 +20,18 @@ class Computer : public Player
     int Dice();
     //Print out Cards
     void printCards();
+    //Suspect Helper
+    string suspectHelper();
+    //Weapon Helper
+    string weaponHelper();
     //Suggest Function
     string Suggest(int roll);
     //Final Weapon Helper Function
-    string weaponHelper();
+    string weaponFinalHelper();
     //Final Suspect Helper Function
-    string suspectHelper();
+    string suspectFinalHelper();
     //Final Room Helper Function
-    string roomHelper();
+    string roomFinalHelper();
     //Final Accusation
     string FinalAccusation();
 

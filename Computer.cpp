@@ -152,7 +152,7 @@ string Computer::Suggest(int roll)
   }
 }
 
-string Computer::weaponHelper()
+string Computer::weaponFinalHelper()
 {
   string allWeapons[] = {"C4C Food", "Ralphie's Horn", "CSCI 2270 Midterm 2", "Dean's List", "Flu from the Dorms", "Freshmen Ego"};
 
@@ -187,7 +187,7 @@ string Computer::weaponHelper()
   }
 }
 
-string Computer::suspectHelper()
+string Computer::suspectFinalHelper()
 {
   string allSuspects[] = {"Ralphie", "Chip the Buffalo", "Mr. Gold", "Ms. Black", "Prashil", "Tanvi"};
 
@@ -222,7 +222,7 @@ string Computer::suspectHelper()
   }
 }
 
-string Computer::roomHelper()
+string Computer::roomFinalHelper()
 {
   string allRooms[] = {"UMC", "Farrand Field", "CSEL", "Kittredge", "Folsom Field", "C4C"};
 
@@ -266,11 +266,11 @@ string Computer::FinalAccusation()
   cout << "The computer has made it into the " << room << "." << endl;
   cout << "The computer will now make a final accusation as to who it thinks committed the murder." << endl;
 
-  weapon = weaponHelper();
+  weapon = weaponFinalHelper();
 
-  suspect = suspectHelper();
+  suspect = suspectFinalHelper();
 
-  room = roomHelper();
+  room = roomFinalHelper();
 
   cout << "Computer's Final Accusation:" << endl;
   cout << "Weapon: " << weapon << endl;
