@@ -160,7 +160,7 @@ string Computer::weaponHelper()
   {
     for (int j = 0; j < 6; j++)
     {
-      if (aTable[i] -> name == allWeapons[j])
+      if (aTable[i].name == allWeapons[j])
       {
         allWeapons[j] == "";
       }
@@ -171,7 +171,7 @@ string Computer::weaponHelper()
   {
     for (int n = 0; n < 6; n++)
     {
-      if (pTable[k] -> name == allWeapons[n])
+      if (pTable[k].name == allWeapons[n])
       {
         allWeapons[n] == "";
       }
@@ -195,7 +195,7 @@ string Computer::suspectHelper()
   {
     for (int j = 0; j < 6; j++)
     {
-      if (aTable[i] -> name == allSuspects[j])
+      if (aTable[i].name == allSuspects[j])
       {
         allSuspects[j] == "";
       }
@@ -206,7 +206,7 @@ string Computer::suspectHelper()
   {
     for (int n = 0; n < 6; n++)
     {
-      if (pTable[k] -> name == allSuspects[n])
+      if (pTable[k].name == allSuspects[n])
       {
         allSuspects[n] == "";
       }
@@ -230,7 +230,7 @@ string Computer::roomHelper()
   {
     for (int j = 0; j < 6; j++)
     {
-      if (aTable[i] -> name == allRooms[j])
+      if (aTable[i].name == allRooms[j])
       {
         allRooms[j] == "";
       }
@@ -241,7 +241,7 @@ string Computer::roomHelper()
   {
     for (int n = 0; n < 6; n++)
     {
-      if (pTable[k] -> name == allRooms[n])
+      if (pTable[k].name == allRooms[n])
       {
         allRooms[n] == "";
       }
@@ -273,11 +273,11 @@ string Computer::FinalAccusation()
   room = roomHelper();
 
   cout << "Computer's Final Accusation:" << endl;
+  cout << "Weapon: " << weapon << endl;
   cout << "Suspect: " << suspect << endl;
   cout << "Room: " << room << endl;
-  cout << "Weapon: " << weapon << endl;
 
-  string compFinal = "Final Accusation: " + suspect + ", " + room + ", " + weapon;
+  string compFinal = "Final Accusation: " + weapon + ", " + suspect + ", " + room;
 
   return compFinal;
 }

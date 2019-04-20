@@ -20,10 +20,6 @@ class Computer : public Player
     int Dice();
     //Print out Cards
     void printCards();
-    //Suspect Helper
-    string suspectHelper();
-    //Weapon Helper
-    string weaponHelper();
     //Suggest Function
     string Suggest(int roll);
     //Final Weapon Helper Function
