@@ -17,20 +17,16 @@ struct Card
 class HashTable
 {
 public:
-    int tableSize = 18;  // No. of buckets (linked lists)
+    int tableSize = 18;
 
-    // Pointer to an array containing buckets
     Card* *table;
 
+    HashTable();
+
     Card* createCard(int key, string name, Card* next);
-    HashTable();  // Constructor
 
-    //void showCard(int key, string name); // Person A's card inserted into Person B's
-
-    // inserts a key into hash table
     bool insertItem(int key, string name);
 
-    // hash function to map values to key
     unsigned int hashFunction(int key);
 
     void printTable();
