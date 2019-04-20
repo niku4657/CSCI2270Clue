@@ -167,15 +167,20 @@ Card* Human::RevealCard(string weapon, string suspect, string room)
   }
   cout << "Please choose a card to dispute the computer's suggestion:" << endl;
 
-  for(int i=0;i<notNull.size();i++){
-    cout<<notNull[i]->name<<endl;
+  for(int i = 0; i < notNull.size(); i++)
+  {
+    cout << notNull[i] -> name << endl;
   }
-string card;
+
+  string card;
   getline(cin, card);
-  for(int i=0;i<notNull.size();i++){
-    if(card==notNull[i]->name)
+
+  for(int i = 0; i < notNull.size(); i++)
+  {
+    if(card == notNull[i] -> name)
       return notNull[i];
   }
-  cout<<"You spelled incorrectly"<<endl;
+
+  cout << "You spelled it incorrectly." << endl;
   return NULL;
 }
