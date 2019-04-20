@@ -15,6 +15,7 @@ string Computer::ChooseTurn()
   string compResult;
   int roll = Dice();
   cout << "You rolled a " << roll << "!" << endl;
+  cout << "Computer's Cards" << endl;
   printCards();
   cout << "Main Menu" << endl;
   cout << "--------------------" << endl;
@@ -256,62 +257,124 @@ string finalRoom()
   return room;
 }
 
+//Helper function 1 - Weapons
+string weaponHelper(){
+  string allWeapons[] = {"C4C Food", "Ralphie's Horn", "CSCI 2270 Midterm 2", "Dean's List", "Flu from the Dorms", "Freshmen Ego"};
+
+  for (int i = 0; i < aTable.size(); i++)
+  {
+    for (int j = 0; j < allWeapons.size(); j++)
+    {
+      if (aTable[i] -> name == allWeapons[j])
+      {
+        allWeapons[j] == "";
+      }
+    }
+  }
+  for (int k = 0; k < pTable.size(); k++)
+  {
+    for (int n = 0; n < allWeapons.size(); n++)
+    {
+      if (pTable[k] -> name == allWeapons[n])
+      {
+        allWeapons[n] == "";
+      }
+    }
+  }
+  for (int x = 0; x < allWeapons.size(); x++)
+  {
+    if (allWeapons[x] != "")
+    {
+      return allWeapons[x];
+    }
+  }
+}
+
+string suspectHelper(){
+  string allSuspects[] = {"Ralphie", "Chip the Buffalo", "Mr. Gold", "Ms. Black", "Prashil", "Tanvi"};
+
+  for (int i = 0; i < aTable.size(); i++)
+  {
+    for (int j = 0; j < allSuspects.size(); j++)
+    {
+      if (aTable[i] -> name == allSuspects[j])
+      {
+        allSuspects[j] == "";
+      }
+    }
+  }
+  for (int k = 0; k < pTable.size(); k++)
+  {
+    for (int n = 0; n < allSuspects.size(); n++)
+    {
+      if (pTable[k] -> name == allSuspects[n])
+      {
+        allSuspects[n] == "";
+      }
+    }
+  }
+  for (int x = 0; x < allSuspects.size(); x++)
+  {
+    if (allSuspects[x] != "")
+    {
+      return allSuspects[x];
+    }
+  }
+}
+
+string roomHelper(){
+  string allRooms[] = {"UMC", "Farrand Field", "CSEL", "Kittredge", "Folsom Field", "C4C"};
+
+  for (int i = 0; i < aTable.size(); i++)
+  {
+    for (int j = 0; j < allRooms.size(); j++)
+    {
+      if (aTable[i] -> name == allRooms[j])
+      {
+        allRooms[j] == "";
+      }
+    }
+  }
+  for (int k = 0; k < pTable.size(); k++)
+  {
+    for (int n = 0; n < allRooms.size(); n++)
+    {
+      if (pTable[k] -> name == allRooms[n])
+      {
+        allRooms[n] == "";
+      }
+    }
+  }
+  for (int x = 0; x < allRooms.size(); x++)
+  {
+    if (allRooms[x] != "")
+    {
+      return allRooms[x];
+    }
+  }
+}
+
 string Computer::FinalAccusation()
 {
   string weapon;
   string suspect;
   string room;
-  bool checkWeapon = true;
-  bool checkSuspect = true;
-  bool checkRoom = true;
 
   cout << "The computer has made it into the " << room << "." << endl;
   cout << "The computer will now make a final accusation as to who it thinks committed the murder." << endl;
 
-  while(checkWeapon == true)
-  {
-    weapon = finalWeapon(); // gives a random weapon
-    checkWeapon = aTable -> searchItem(0, weapon);
+  weapon = weaponHelper();
 
-    if (checkWeapon == false)
-    {
-      checkWeapon = pTable -> searchItem(0, weapon);
-    }
+  suspect = suspectHelper();
 
-    if(checkWeapon == NULL)
-    {
-      pTable -> searchItem(0, weapon);
-    }
-  }
+  room = roomHelper();
 
-  while(checkSuspect == true)
-  {
-    suspect = finalSuspect();
-    checkWeapon = aTable -> searchItem(6, suspect);
-
-    if(checkWeapon == NULL)
-    {
-      pTable -> searchItem(6, suspect);
-    }
-  }
-
-  while(checkWeapon == true)
-  {
-    room = finalRoom();
-    checkWeapon = aTable -> searchItem(12, suspect);
-
-    if(checkWeapon == NULL)
-    {
-      pTable -> searchItem(12, suspect);
-    }
-  }
-
-  cout << "Computer's Accusation:" << endl;
-  cout << "Room: " << room << endl;
+  cout << "Computer's Final Accusation:" << endl;
   cout << "Suspect: " << suspect << endl;
+  cout << "Room: " << room << endl;
   cout << "Weapon: " << weapon << endl;
 
-  string compSuggest = "Final Accusation: " + weapon + ", " + suspect + ", " + room;
+  string compSuggest = "Final Accusation: " + suspect + ", " + room + ", " + weapon;
 
   return compSuggest;
 }

@@ -42,12 +42,12 @@ void ClueCard::fillInSuspects()
 
 void ClueCard::fillInRooms()
 {
-  addCardArray(room, 12, "C4C Food");
-  addCardArray(room, 13, "Ralphie's Horn");
-  addCardArray(room, 14, "CSCI 2270 Midterm 2");
-  addCardArray(room, 15, "Dean's List");
-  addCardArray(room, 16, "Flu from the Dorms");
-  addCardArray(room, 17, "Freshmen Ego");
+  addCardArray(room, 12, "UMC");
+  addCardArray(room, 13, "Farrand Field");
+  addCardArray(room, 14, "CSEL");
+  addCardArray(room, 15, "Kittredge");
+  addCardArray(room, 16, "Folsom Field");
+  addCardArray(room, 17, "C4C");
 
 }
 

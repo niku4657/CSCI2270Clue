@@ -15,6 +15,7 @@ string Human::ChooseTurn()
   string quitGame;
   int roll = Dice();
   cout << "You rolled a " << roll << "!" << endl;
+  cout << "Here are your current cards: " << endl;
   printCards();
   cout << "Main Menu" << endl;
   cout << "--------------------" << endl;
@@ -134,7 +135,7 @@ string Human::FinalAccusation()
   getline(cin, room);
   cout << endl;
 
-  string finalResult = "Final Accusation: " + weapon + ", " + suspect + ", " + room;
+  string finalResult = "Final Accusation: " + suspect + ", " + room + ", " + weapon;
 
   return finalResult;
 }
