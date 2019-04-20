@@ -26,6 +26,12 @@ class Computer : public Player
     string weaponHelper();
     //Suggest Function
     string Suggest(int roll);
+    //Final Weapon Helper Function
+    string weaponHelper();
+    //Final Suspect Helper Function
+    string suspectHelper();
+    //Final Room Helper Function
+    string roomHelper();
     //Final Accusation
     string FinalAccusation();
 

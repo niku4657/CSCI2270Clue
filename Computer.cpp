@@ -152,118 +152,13 @@ string Computer::Suggest(int roll)
   }
 }
 
-string finalWeapon()
+string Computer::weaponHelper()
 {
-  int computerDice = rand() % 6 + 1;
-  string weapon;
-
-  switch(computerDice)
-  {
-    case 1:
-      weapon = "C4C Food";
-    break;
-
-    case 2:
-      weapon = "Ralphie's Horn";
-    break;
-
-    case 3:
-      weapon = "CSCI 2270 Midterm 2";
-    break;
-
-    case 4:
-      weapon = "Dean's List";
-    break;
-
-    case 5:
-      weapon = "Flu from the Dorms";
-    break;
-
-    case 6:
-      weapon = "Freshmen Ego";
-    break;
-  }
-
-  return weapon;
-}
-
-string finalSuspect()
-{
-  int computerDice = rand() % 6 + 1;
-  string suspect;
-
-  switch(computerDice)
-  {
-    case 1:
-      suspect = "Ralphie";
-    break;
-
-    case 2:
-      suspect = "Chip the Buffalo";
-    break;
-
-    case 3:
-      suspect = "Mr. Gold";
-    break;
-
-    case 4:
-      suspect = "Ms. Black";
-    break;
-
-    case 5:
-      suspect = "Prashil";
-    break;
-
-    case 6:
-      suspect = "Tanvi";
-    break;
-  }
-
-  return suspect;
-}
-
-string finalRoom()
-{
-  int computerDice = rand() % 6 + 1;
-  string room;
-
-  switch(computerDice)
-  {
-    case 1:
-      room = "UMC";
-    break;
-
-    case 2:
-      room = "Farrand Field";
-    break;
-
-    case 3:
-      room = "CSEL";
-    break;
-
-    case 4:
-      room = "Kittredge";
-    break;
-
-    case 5:
-      room = "Folsom Field";
-    break;
-
-    case 6:
-      room = "C4C";
-    break;
-  }
-
-  return room;
-}
-
-//Helper function 1 - Weapons
-string weaponHelper(){
   string allWeapons[] = {"C4C Food", "Ralphie's Horn", "CSCI 2270 Midterm 2", "Dean's List", "Flu from the Dorms", "Freshmen Ego"};
 
-  for (int i = 0; i < aTable.size(); i++)
+  for (int i = 0; i < aTable -> tableSize; i++)
   {
-    for (int j = 0; j < allWeapons.size(); j++)
+    for (int j = 0; j < 6; j++)
     {
       if (aTable[i] -> name == allWeapons[j])
       {
@@ -271,9 +166,10 @@ string weaponHelper(){
       }
     }
   }
-  for (int k = 0; k < pTable.size(); k++)
+
+  for (int k = 0; k < pTable -> tableSize; k++)
   {
-    for (int n = 0; n < allWeapons.size(); n++)
+    for (int n = 0; n < 6; n++)
     {
       if (pTable[k] -> name == allWeapons[n])
       {
@@ -281,7 +177,8 @@ string weaponHelper(){
       }
     }
   }
-  for (int x = 0; x < allWeapons.size(); x++)
+
+  for (int x = 0; x < 6; x++)
   {
     if (allWeapons[x] != "")
     {
@@ -290,12 +187,13 @@ string weaponHelper(){
   }
 }
 
-string suspectHelper(){
+string Computer::suspectHelper()
+{
   string allSuspects[] = {"Ralphie", "Chip the Buffalo", "Mr. Gold", "Ms. Black", "Prashil", "Tanvi"};
 
-  for (int i = 0; i < aTable.size(); i++)
+  for (int i = 0; i < aTable -> tableSize; i++)
   {
-    for (int j = 0; j < allSuspects.size(); j++)
+    for (int j = 0; j < 6; j++)
     {
       if (aTable[i] -> name == allSuspects[j])
       {
@@ -303,9 +201,10 @@ string suspectHelper(){
       }
     }
   }
-  for (int k = 0; k < pTable.size(); k++)
+
+  for (int k = 0; k < pTable -> tableSize; k++)
   {
-    for (int n = 0; n < allSuspects.size(); n++)
+    for (int n = 0; n < 6; n++)
     {
       if (pTable[k] -> name == allSuspects[n])
       {
@@ -313,7 +212,8 @@ string suspectHelper(){
       }
     }
   }
-  for (int x = 0; x < allSuspects.size(); x++)
+
+  for (int x = 0; x < 6; x++)
   {
     if (allSuspects[x] != "")
     {
@@ -322,12 +222,13 @@ string suspectHelper(){
   }
 }
 
-string roomHelper(){
+string Computer::roomHelper()
+{
   string allRooms[] = {"UMC", "Farrand Field", "CSEL", "Kittredge", "Folsom Field", "C4C"};
 
-  for (int i = 0; i < aTable.size(); i++)
+  for (int i = 0; i < aTable -> tableSize; i++)
   {
-    for (int j = 0; j < allRooms.size(); j++)
+    for (int j = 0; j < 6; j++)
     {
       if (aTable[i] -> name == allRooms[j])
       {
@@ -335,9 +236,10 @@ string roomHelper(){
       }
     }
   }
-  for (int k = 0; k < pTable.size(); k++)
+
+  for (int k = 0; k < pTable -> tableSize; k++)
   {
-    for (int n = 0; n < allRooms.size(); n++)
+    for (int n = 0; n < 6; n++)
     {
       if (pTable[k] -> name == allRooms[n])
       {
@@ -345,7 +247,8 @@ string roomHelper(){
       }
     }
   }
-  for (int x = 0; x < allRooms.size(); x++)
+
+  for (int x = 0; x < 6; x++)
   {
     if (allRooms[x] != "")
     {
@@ -374,7 +277,7 @@ string Computer::FinalAccusation()
   cout << "Room: " << room << endl;
   cout << "Weapon: " << weapon << endl;
 
-  string compSuggest = "Final Accusation: " + suspect + ", " + room + ", " + weapon;
+  string compFinal = "Final Accusation: " + suspect + ", " + room + ", " + weapon;
 
-  return compSuggest;
+  return compFinal;
 }
