@@ -1,11 +1,15 @@
 #include <iostream>
 #include <string>
+#include <typeinfo>
+#include <vector>
 #include "Game.hpp"
 #include "Computer.hpp"
 #include "Player.hpp"
 #include "Human.hpp"
 #include "HashTable.hpp"
 #include "ClueCard.hpp"
+
+#include<conio.h>
 using namespace std;
 
 Game::Game()
@@ -20,267 +24,37 @@ Game::~Game()
 
 void Game::initializePlayersArray()
 {
-  players[0] = new Human();
-  players[1] = new Computer();
-  players[2] = new Computer();
+  players[0].name = "h1";
+  players[0].type = "Human";
+
+  players[1].name = "c1";
+  players[1].type = "Computer";
+
+  players[2].name = "c2";
+  players[2].type = "Computer";
 }
 
 void Game::distributeCards()
 {
   cc.mergeArrays();
   Card* card = new Card;
-  for(int i = 0; i < 15; i + 3)
+  for(int i = 0; i < 15; i=i + 3)
   {
     card = &(cc.allCards[i]);
-    players[0] -> aTable -> insertItem(card -> key, card -> name);
+    players[0].addCard(card -> key, card -> name);
   }
 
-  for (int i = 1; i < 15; i + 3)
+  for (int i = 1; i < 15;i= i + 3)
   {
     card = &(cc.allCards[i]);
-    players[1] -> aTable -> insertItem(card -> key, card -> name);
+    players[1].addCard(card -> key, card -> name);
   }
 
-  for(int i = 2; i < 15; i + 3)
+  for(int i = 2; i < 15;i= i + 3)
   {
     card = &(cc.allCards[i]);
-    players[1] -> aTable -> insertItem(card -> key, card -> name);
+    players[2].addCard(card -> key, card -> name);
   }
-}
-
-void Game::duplicateCard(Card* card, Player* p)
-{
-  p -> pTable -> insertItem(card -> key, card -> name);
-}
-
-Card* Game::humanRevealCard(string weapon, string suspect, string room, int num)
-{
-  string card = "";
-  Card *w = players[num] -> pTable -> searchItem(0, weapon);
-  Card *s = players[num] -> pTable -> searchItem(6, suspect);
-  Card *r = players[num] -> pTable -> searchItem(12, room);
-
-	if(w == NULL && s == NULL && r == NULL)
-	{
-		cout << "You have no cards to dispute the computer's suggestion." << endl;
-	}
-
-	if(w != NULL || s != NULL || r != NULL)
-	{
-		cout << "Please choose a card to dispute the computer's suggestion:" << endl;
-
-    if(w != NULL)
-    {
-      cout << w -> name << endl;
-    }
-
-    if(s != NULL)
-    {
-      cout << s -> name << endl;
-    }
-
-    if(r != NULL)
-    {
-      cout << r -> name << endl;
-    }
-
-    getline(cin, card);
-
-    if(card == w -> name)
-    {
-      return w;
-    }
-    else if(card == s -> name)
-    {
-      return s;
-    }
-    else
-    {
-      return r;
-    }
-	}
-
-  return NULL;
-}
-
-Card* Game::computerRevealCard(string weapon, string suspect, string room, int num)
-{
-  int randReveal;
-  Card *w = players[num] -> pTable -> searchItem(0, weapon);
-  Card *s = players[num] -> pTable -> searchItem(6, suspect);
-  Card *r = players[num] -> pTable -> searchItem(12, room);
-
-	if(w == NULL && s == NULL && r == NULL)
-	{
-    cout << "The computer has no cards that dispute the human's suggestion." << endl;
-    return NULL;
-	}
-
-	if(w != NULL || s != NULL || r != NULL)
-	{
-    if (w != NULL)
-    {
-      if(s != NULL && r != NULL)
-      {
-        //Case of computer having all cards.
-        randReveal = rand() % 3 + 1; //computer is choosing a card to reveal at random
-
-        if (randReveal == 1)
-        {
-          return w;
-        }
-        else if (randReveal == 2)
-        {
-          return s;
-        }
-        else if (randReveal == 3)
-        {
-          return r;
-        }
-      }
-      else if(s != NULL && r == NULL)
-      {
-        //Case of computer having two cards.
-        randReveal = rand() % 2 + 1;
-
-        if (randReveal == 1)
-        {
-          return w;
-        }
-        else if (randReveal == 2)
-        {
-          return s;
-        }
-      }
-      else if(s == NULL && r != NULL)
-      {
-        //Case of computer having two cards.
-        randReveal = rand() % 2 + 1;
-
-        if (randReveal == 1)
-        {
-          return w;
-        }
-        else if (randReveal == 2)
-        {
-          return r;
-        }
-      }
-      else
-      {
-        //Case of computer having one card.
-        return w;
-      }
-    }
-    if (s != NULL)
-    {
-      if(w != NULL && r != NULL)
-      {
-        //Case of computer having all cards.
-        randReveal = rand() % 3 + 1; //computer is choosing a card to reveal at random
-
-        if (randReveal == 1)
-        {
-          return s;
-        }
-        else if (randReveal == 2)
-        {
-          return w;
-        }
-        else if (randReveal == 3)
-        {
-          return r;
-        }
-      }
-      else if(w != NULL && r == NULL)
-      {
-        //Case of computer having two cards.
-        randReveal = rand() % 2 + 1;
-
-        if (randReveal == 1)
-        {
-          return s;
-        }
-        else if (randReveal == 2)
-        {
-          return w;
-        }
-      }
-      else if(w == NULL && r != NULL)
-      {
-        //Case of computer having two cards.
-        randReveal = rand() % 2 + 1;
-
-        if (randReveal == 1)
-        {
-          return s;
-        }
-        else if (randReveal == 2)
-        {
-          return r;
-        }
-      }
-      else
-      {
-        //Case of computer having one card.
-        return s;
-      }
-    }
-    if (r != NULL)
-    {
-      if(w != NULL && s != NULL)
-      {
-        //Case of computer having all cards.
-        randReveal = rand() % 3 + 1; //computer is choosing a card to reveal at random
-
-        if (randReveal == 1)
-        {
-          return r;
-        }
-        else if (randReveal == 2)
-        {
-          return w;
-        }
-        else if (randReveal == 3)
-        {
-          return s;
-        }
-      }
-      else if(w != NULL && s == NULL)
-      {
-        //Case of computer having two cards.
-        randReveal = rand() % 2 + 1;
-
-        if (randReveal == 1)
-        {
-          return r;
-        }
-        else if (randReveal == 2)
-        {
-          return w;
-        }
-      }
-      else if(w == NULL && s != NULL)
-      {
-        //Case of computer having two cards.
-        randReveal = rand() % 2 + 1;
-
-        if (randReveal == 1)
-        {
-          return r;
-        }
-        else if (randReveal == 2)
-        {
-          return s;
-        }
-      }
-      else
-      {
-        //Case of computer having one card.
-        return r;
-      }
-    }
-	}
 }
 
 int split(string str, char c, string array[], int size)
@@ -317,12 +91,11 @@ void Game::startGame()
   //Game Setup
   bool isRunning = true;
   string arr[4];
-  string humanTurnOut;
+  string turnOut;
   string gameSuggest = "Suggest";
   string gameAccuse = "Final Accusation";
-  string computerTurnOut;
-  Card *c = new Card;
-  Card *c2 = new Card;
+  Card *c;
+  Card *c2;
   int currTurn = 0;
   int numOfPlayers = 3;
 
@@ -330,7 +103,9 @@ void Game::startGame()
   cc.fillInWeapons();
   cc.fillInSuspects();
   cc.fillInRooms();
+
   cc.shuffleCards();
+
   distributeCards();
 
   //Game Start
@@ -349,39 +124,38 @@ void Game::startGame()
   while(isRunning)
   {
     currTurn = currTurn % numOfPlayers;
-    humanTurnOut = players[currTurn] -> ChooseTurn();
+    cout << "It is now " << players[currTurn].name << "'s turn." << endl << endl;
+    turnOut = players[currTurn].ChooseTurn();
 
-    if(humanTurnOut.find(gameSuggest) != string::npos) //npos means greatest length of string
+    if(turnOut.find(gameSuggest) != string::npos) //npos means greatest length of string
     {
       //Suggestion
-      split(humanTurnOut, ',', arr, 4);
-      if(currTurn == 0)
+      split(turnOut, ',', arr, 4);
+      vector<Card*> reveal;
+      for(int i = 0; i < 3; i++)
       {
-        c = computerRevealCard(arr[1], arr[2], arr[3], currTurn++);
-        c2 = computerRevealCard(arr[1], arr[2], arr[3], currTurn + 2);
-      }
-      else if(currTurn == 1)
-      {
-        c2 = computerRevealCard(arr[1], arr[2], arr[3], currTurn++);
-        c = humanRevealCard(arr[1], arr[2], arr[3], currTurn + 2);
-      }
-      else
-      {
-        c = humanRevealCard(arr[1], arr[2], arr[3], currTurn++);
-        c2 = computerRevealCard(arr[1], arr[2], arr[3], currTurn + 2);
+        if(i != currTurn)
+        {
+          Card* c = players[i].RevealCard(arr[1], arr[2], arr[3]);
+          if(c != NULL)
+          {
+            reveal.push_back(c);
+          }
+        }
       }
 
-      duplicateCard(c, players[currTurn]);
-      duplicateCard(c2, players[currTurn]);
+      for(int i = 0; i < reveal.size(); i++)
+      {
+        players[i].addCardToP(reveal[i]->key, reveal[i]->name);
+      }
 
       //Switch Players
       currTurn++;
-      computerTurnOut = players[currTurn] -> ChooseTurn();
     }
-    else if(humanTurnOut.find(gameAccuse) != string::npos)
+    else if(turnOut.find(gameAccuse) != string::npos)
     {
       //Final Accusation
-      split(humanTurnOut, ',', arr, 4);
+      split(turnOut, ',', arr, 4);
 
       if(cc.checkEnvelope(arr[1], arr[2], arr[3]))
       {
@@ -398,19 +172,22 @@ void Game::startGame()
 
       isRunning = false;
     }
-    else if(humanTurnOut == "Quit Turn")
+    else if(turnOut == "Quit Turn")
     {
       //Quit Turn
       currTurn++;
-      computerTurnOut = players[currTurn] -> ChooseTurn(); //switch players
     }
-    else
+    else if(turnOut == "Quit Game")
     {
       //Quit Game
       cout << "You have quit the game." << endl;
       isRunning = false;
     }
-  }
 
-  cout << "THE MURDERER GOT TO YOU." << endl;
+    //Clear The Screen
+    system("cls");
+    //Sleep Time...
+  }
+  
+  cout << "The game is over!" << endl;
 }

@@ -6,6 +6,7 @@
 #include "Player.hpp"
 #include "Computer.hpp"
 #include "Human.hpp"
+#include "HashTable.hpp"
 
 using namespace std;
 
@@ -13,12 +14,11 @@ class Game
 {
     public:
         ClueCard cc;
-        Player* players[3];
+        Player players[3];
         Game();
         ~Game();
         void initializePlayersArray();
         void distributeCards();
-        void duplicateCard(Card* card, Player* p);
         Card* humanRevealCard(string weapon, string suspect, string room, int num);
         Card* computerRevealCard(string weapon, string suspect, string room, int num);
         void startGame();

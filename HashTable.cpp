@@ -56,19 +56,32 @@ unsigned int HashTable::hashFunction(int key)
 
 void HashTable::printTable()
 {
-    for (int i = 0; i < tableSize; i++) {
-        cout << i <<"|| ";
+    for (int i = 0; i < tableSize; i++)
+    {
+      if(i == 0)
+      {
+        cout << "Weapons" <<": " << endl;
+      }
+      else if(i == 2)
+      {
+        cout << "Suspects" <<": " << endl;;
+      }
+      else
+      {
+        cout << "Rooms" <<": " << endl;
+      }
 
-        Card* temp;
-        temp = table[i];
-        while (temp != NULL)
-        {
-            cout << "CARD" << endl;
-            cout << temp -> key << ": ";
-            cout << temp -> name << endl;
-            temp = temp -> next;
-        }
-        cout << endl;
+      Card* temp;
+
+      temp = table[i];
+
+      while (temp != NULL)
+      {
+          cout << temp -> name << " || ";
+          temp = temp -> next;
+      }
+
+      cout << endl << endl;
     }
 
  }

@@ -3,15 +3,14 @@
 #include <cstring>
 #include <iostream>
 #include <string>
-#include "Player.hpp"
 #include "HashTable.hpp"
 using namespace std;
 
-class Computer : public Player
+class Computer
 {
   public:
-    HashTable *aTable;
-    HashTable *pTable;
+    HashTable *aTable = new HashTable;
+    HashTable *pTable = new HashTable;
     //Constructor
     Computer();
     //Choose from menu to roll, suggest, and make final accusation.
@@ -34,6 +33,8 @@ class Computer : public Player
     string roomFinalHelper();
     //Final Accusation
     string FinalAccusation();
+    //Reveal Card
+    Card* RevealCard(string weapon, string suspect, string room);
 
 };
 #endif

@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 #include "Computer.hpp"
 #include "HashTable.hpp"
 #include "Player.hpp"
@@ -14,16 +15,9 @@ string Computer::ChooseTurn()
   int computerTurn;
   string compResult;
   int roll = Dice();
-  cout << "You rolled a " << roll << "!" << endl;
-  cout << "Computer's Cards" << endl;
-  printCards();
-  cout << "Main Menu" << endl;
-  cout << "--------------------" << endl;
-  cout << "1. Suggest" << endl;
-  cout << "2. Final Accusation" << endl;
-  cout << "3. Quit Turn" << endl;
+
   //random function between 1 - 3
-  computerTurn = rand() % 4 + 1;
+  computerTurn = rand() % 3 + 1;
 
   if (computerTurn == 1)
   {
@@ -37,7 +31,6 @@ string Computer::ChooseTurn()
   }
   else if (computerTurn == 3)
   {
-    cout << "The computer has quit its turn. It is now the human's turn." << endl; //Switch turn in int main
     return "Quit Turn";
   }
 }
@@ -47,7 +40,8 @@ int Computer::Dice()
 	return rand() % 6 + 1; //Random from 1 to 6 is returned.
 }
 
-void Computer::printCards(){
+void Computer::printCards()
+{
   aTable -> printTable();
   pTable -> printTable();
 }
@@ -304,4 +298,31 @@ string Computer::FinalAccusation()
   string compFinal = "Final Accusation: " + weapon + ", " + suspect + ", " + room;
 
   return compFinal;
+}
+
+Card* Computer::RevealCard(string weapon, string suspect, string room)
+{
+  Card* cards[3];
+  cards[0] = aTable -> searchItem(0, weapon);
+  cards[1] = aTable -> searchItem(6, suspect);
+  cards[2] = aTable -> searchItem(12, room);
+
+  vector<Card*> notNull;
+  for(int i = 0; i < 3; i++)
+  {
+    if(cards[i] != NULL)
+    {
+      notNull.push_back(cards[i]);
+    }
+  }
+
+  if(notNull.size() == 0)
+  {
+    return NULL;
+  }
+  else
+  {
+    int random = rand() % notNull.size();
+    return notNull[random];
+  }
 }

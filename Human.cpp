@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Human.hpp"
+#include <vector>
 using namespace std;
 
 Human::Human()
@@ -13,10 +14,13 @@ string Human::ChooseTurn()
   string turnResult;
   string quitTurn;
   string quitGame;
+
   int roll = Dice();
-  cout << "You rolled a " << roll << "!" << endl;
-  cout << "Here are your current cards: " << endl;
+  cout << "You rolled a " << roll << "!" << endl << endl;
+  cout << "Here are your current cards: " << endl << endl;
+
   printCards();
+
   cout << "Main Menu" << endl;
   cout << "--------------------" << endl;
   cout << "1. Suggest" << endl;
@@ -49,7 +53,6 @@ string Human::ChooseTurn()
     quitGame = "Quit Game";
     return quitGame;
   }
-  return "";
 }
 
 int Human::Dice()
@@ -59,10 +62,11 @@ int Human::Dice()
 
 void Human::printCards()
 {
-  cout << "YOUR CARDS" << endl;
+  cout << "YOUR CARDS" << endl << endl;
   cout << "* Reference these cards to make future suggestions";
-  cout << " about what evidence is eliminated and which could be solution to the mystery *" << endl;
+  cout << " about what evidence is eliminated and which could be solution to the mystery *" << endl << endl;
   aTable -> printTable();
+  cout << "REVEALED CARDS" << endl << endl;
   pTable -> printTable();
 }
 
@@ -90,11 +94,11 @@ string Human::Suggest(int roll)
     cout << "Your Suggestion:" << endl;
     cout << "Room: " << room << endl;
 
-    cout << "Suspect";
+    cout << "Suspect: ";
     getline(cin, suspect);
     cout << endl;
 
-    cout << "Weapon";
+    cout << "Weapon: ";
     getline(cin, weapon);
     cout << endl;
 
@@ -123,19 +127,55 @@ string Human::FinalAccusation()
   cout << "Your Final Accusation:" << endl;
   cout << "----------------------" << endl;
 
-  cout << "Weapon";
+  cout << "Weapon: ";
   getline(cin, weapon);
   cout << endl;
 
-  cout << "Suspect";
+  cout << "Suspect: ";
   getline(cin, suspect);
   cout << endl;
 
-  cout << "Room:";
+  cout << "Room: ";
   getline(cin, room);
   cout << endl;
 
   string finalResult = "Final Accusation: " + suspect + ", " + room + ", " + weapon;
 
   return finalResult;
+}
+
+Card* Human::RevealCard(string weapon, string suspect, string room)
+{
+  Card* cards[3];
+  cards[0] = aTable -> searchItem(0, weapon);
+  cards[1] = aTable -> searchItem(6, suspect);
+  cards[2] = aTable -> searchItem(12, room);
+
+  vector<Card*> notNull;
+  for(int i = 0; i < 3; i++)
+  {
+    if(cards[i] != NULL)
+    {
+      notNull.push_back(cards[i]);
+    }
+  }
+
+	if(notNull.size() == 0)
+	{
+		cout << "You have no cards to dispute the computer's suggestion." << endl;
+    return NULL;
+  }
+  cout << "Please choose a card to dispute the computer's suggestion:" << endl;
+
+  for(int i=0;i<notNull.size();i++){
+    cout<<notNull[i]->name<<endl;
+  }
+string card;
+  getline(cin, card);
+  for(int i=0;i<notNull.size();i++){
+    if(card==notNull[i]->name)
+      return notNull[i];
+  }
+  cout<<"You spelled incorrectly"<<endl;
+  return NULL;
 }
