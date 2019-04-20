@@ -160,9 +160,16 @@ string Computer::weaponFinalHelper()
   {
     for (int j = 0; j < 6; j++)
     {
-      if (aTable[i].name == allWeapons[j])
+      Card* temp = aTable[i];
+
+      while(temp != NULL)
       {
-        allWeapons[j] == "";
+        if(temp -> name == allWeapons[j])
+        {
+          allWeapons[j] == "";
+        }
+
+        temp = temp -> next;
       }
     }
   }
@@ -171,9 +178,16 @@ string Computer::weaponFinalHelper()
   {
     for (int n = 0; n < 6; n++)
     {
-      if (pTable[k].name == allWeapons[n])
+      Card* temp = pTable[i];
+
+      while(temp != NULL)
       {
-        allWeapons[n] == "";
+        if(temp -> name == allWeapons[j])
+        {
+          allWeapons[j] == "";
+        }
+
+        temp = temp -> next;
       }
     }
   }
@@ -195,9 +209,16 @@ string Computer::suspectFinalHelper()
   {
     for (int j = 0; j < 6; j++)
     {
-      if (aTable[i].name == allSuspects[j])
+      Card* temp = aTable[i];
+
+      while(temp != NULL)
       {
-        allSuspects[j] == "";
+        if(temp -> name == allWeapons[j])
+        {
+          allWeapons[j] == "";
+        }
+
+        temp = temp -> next;
       }
     }
   }
@@ -206,9 +227,16 @@ string Computer::suspectFinalHelper()
   {
     for (int n = 0; n < 6; n++)
     {
-      if (pTable[k].name == allSuspects[n])
+      Card* temp = pTable[i];
+
+      while(temp != NULL)
       {
-        allSuspects[n] == "";
+        if(temp -> name == allWeapons[j])
+        {
+          allWeapons[j] == "";
+        }
+
+        temp = temp -> next;
       }
     }
   }
@@ -230,9 +258,16 @@ string Computer::roomFinalHelper()
   {
     for (int j = 0; j < 6; j++)
     {
-      if (aTable[i].name == allRooms[j])
+      Card* temp = aTable[i];
+
+      while(temp != NULL)
       {
-        allRooms[j] == "";
+        if(temp -> name == allWeapons[j])
+        {
+          allWeapons[j] == "";
+        }
+
+        temp = temp -> next;
       }
     }
   }
@@ -241,9 +276,16 @@ string Computer::roomFinalHelper()
   {
     for (int n = 0; n < 6; n++)
     {
-      if (pTable[k].name == allRooms[n])
+      Card* temp = pTable[i];
+
+      while(temp != NULL)
       {
-        allRooms[n] == "";
+        if(temp -> name == allWeapons[j])
+        {
+          allWeapons[j] == "";
+        }
+
+        temp = temp -> next;
       }
     }
   }
