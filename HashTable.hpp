@@ -17,9 +17,9 @@ struct Card
 class HashTable
 {
 public:
-    int tableSize = 18;
+    int tableSize = 3;
 
-    Card* *table;
+    Card** table;
 
     HashTable();
 

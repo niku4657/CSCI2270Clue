@@ -156,40 +156,34 @@ string Computer::weaponFinalHelper()
 {
   string allWeapons[] = {"C4C Food", "Ralphie's Horn", "CSCI 2270 Midterm 2", "Dean's List", "Flu from the Dorms", "Freshmen Ego"};
 
-  for (int i = 0; i < aTable -> tableSize; i++)
+  Card* temp = aTable -> table[0];
+
+  while(temp != NULL)
   {
     for (int j = 0; j < 6; j++)
     {
-      Card* temp = aTable[i];
-
-      while(temp != NULL)
+      if (temp -> name == allWeapons[j])
       {
-        if(temp -> name == allWeapons[j])
-        {
-          allWeapons[j] == "";
-        }
-
-        temp = temp -> next;
+        allWeapons[j] == "";
       }
     }
+
+    temp = temp -> next;
   }
 
-  for (int k = 0; k < pTable -> tableSize; k++)
+  Card* temp2 = pTable -> table[0];
+
+  while(temp2 != NULL)
   {
-    for (int n = 0; n < 6; n++)
+    for (int j = 0; j < 6; j++)
     {
-      Card* temp = pTable[i];
-
-      while(temp != NULL)
+      if (temp2 -> name == allWeapons[j])
       {
-        if(temp -> name == allWeapons[j])
-        {
-          allWeapons[j] == "";
-        }
-
-        temp = temp -> next;
+        allWeapons[j] == "";
       }
     }
+
+    temp2 = temp2 -> next;
   }
 
   for (int x = 0; x < 6; x++)
@@ -205,40 +199,34 @@ string Computer::suspectFinalHelper()
 {
   string allSuspects[] = {"Ralphie", "Chip the Buffalo", "Mr. Gold", "Ms. Black", "Prashil", "Tanvi"};
 
-  for (int i = 0; i < aTable -> tableSize; i++)
+  Card* temp = aTable -> table[1];
+
+  while(temp != NULL)
   {
     for (int j = 0; j < 6; j++)
     {
-      Card* temp = aTable[i];
-
-      while(temp != NULL)
+      if (temp -> name == allSuspects[j])
       {
-        if(temp -> name == allWeapons[j])
-        {
-          allWeapons[j] == "";
-        }
-
-        temp = temp -> next;
+        allSuspects[j] == "";
       }
     }
+
+    temp = temp -> next;
   }
 
-  for (int k = 0; k < pTable -> tableSize; k++)
+  Card* temp2 = pTable -> table[1];
+
+  while(temp2 != NULL)
   {
-    for (int n = 0; n < 6; n++)
+    for (int j = 0; j < 6; j++)
     {
-      Card* temp = pTable[i];
-
-      while(temp != NULL)
+      if (temp2 -> name == allSuspects[j])
       {
-        if(temp -> name == allWeapons[j])
-        {
-          allWeapons[j] == "";
-        }
-
-        temp = temp -> next;
+        allSuspects[j] == "";
       }
     }
+
+    temp2 = temp2 -> next;
   }
 
   for (int x = 0; x < 6; x++)
@@ -254,40 +242,34 @@ string Computer::roomFinalHelper()
 {
   string allRooms[] = {"UMC", "Farrand Field", "CSEL", "Kittredge", "Folsom Field", "C4C"};
 
-  for (int i = 0; i < aTable -> tableSize; i++)
+  Card* temp = aTable -> table[2];
+
+  while(temp != NULL)
   {
     for (int j = 0; j < 6; j++)
     {
-      Card* temp = aTable[i];
-
-      while(temp != NULL)
+      if (temp -> name == allRooms[j])
       {
-        if(temp -> name == allWeapons[j])
-        {
-          allWeapons[j] == "";
-        }
-
-        temp = temp -> next;
+        allRooms[j] == "";
       }
     }
+
+    temp = temp -> next;
   }
 
-  for (int k = 0; k < pTable -> tableSize; k++)
+  Card* temp2 = pTable -> table[2];
+
+  while(temp2 != NULL)
   {
-    for (int n = 0; n < 6; n++)
+    for (int j = 0; j < 6; j++)
     {
-      Card* temp = pTable[i];
-
-      while(temp != NULL)
+      if (temp2 -> name == allRooms[j])
       {
-        if(temp -> name == allWeapons[j])
-        {
-          allWeapons[j] == "";
-        }
-
-        temp = temp -> next;
+        allRooms[j] == "";
       }
     }
+
+    temp2 = temp2 -> next;
   }
 
   for (int x = 0; x < 6; x++)
