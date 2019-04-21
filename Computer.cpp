@@ -10,13 +10,47 @@ Computer::Computer()
   //Leave empty.
 }
 
+bool Computer::canMakeFinal()
+{
+  int count = 0;
+
+  for(int i = 0; i < 3; i++)
+  {
+    Card* temp = aTable -> table[i];
+
+    while(temp != NULL)
+    {
+      count++;
+      temp = temp -> next;
+    }
+  }
+
+  for(int k = 0; k < 3; k++)
+  {
+    Card* temp = pTable -> table[k];
+
+    while(temp != NULL)
+    {
+      count++;
+      temp = temp -> next;
+    }
+  }
+
+  if(count == 15)
+  {
+    return true;
+  }
+
+  return false;
+}
+
 string Computer::ChooseTurn()
 {
   int computerTurn;
   string compResult;
   int roll = Dice();
 
-  //random function between 1 - 3
+  //random function between 1 - 2
   computerTurn = rand() % 3 + 1;
 
   if (computerTurn == 1)
@@ -24,12 +58,12 @@ string Computer::ChooseTurn()
     compResult = Suggest(roll);
     return compResult;
   }
-  else if (computerTurn == 2)
+  else if (computerTurn == 2 && canMakeFinal())
   {
     compResult = FinalAccusation();
     return compResult;
   }
-  else if (computerTurn == 3)
+  else
   {
     return "Quit Turn";
   }

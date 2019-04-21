@@ -8,6 +8,8 @@
 #include "Human.hpp"
 #include "HashTable.hpp"
 #include "ClueCard.hpp"
+#include <Windows.h>
+
 
 #include<conio.h>
 using namespace std;
@@ -27,11 +29,11 @@ void Game::initializePlayersArray()
   players[0].name = "h1";
   players[0].type = "Human";
 
-  players[1].name = "c1";
-  players[1].type = "Computer";
+  players[1].name = "h2";
+  players[1].type = "Human";
 
-  players[2].name = "c2";
-  players[2].type = "Computer";
+  players[2].name = "h3";
+  players[2].type = "Human";
 }
 
 void Game::distributeCards()
@@ -184,10 +186,11 @@ void Game::startGame()
       isRunning = false;
     }
 
+    //Sleep Time
+    Sleep(1000);
     //Clear The Screen
     system("cls");
-    //Sleep Time...
   }
-  
+
   cout << "The game is over!" << endl;
 }

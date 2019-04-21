@@ -13,6 +13,8 @@ class Computer
     HashTable *pTable = new HashTable;
     //Constructor
     Computer();
+    //Helper to choose to make final accusation.
+    bool canMakeFinal();
     //Choose from menu to roll, suggest, and make final accusation.
     string ChooseTurn();
     //Roll Function
