@@ -89,7 +89,6 @@ void HashTable::printTable()
 //function to search
 Card* HashTable::searchItem(int key, string name)
 {
-
     //Compute the index by using the hash function
     int index = hashFunction(key);
 
@@ -102,7 +101,7 @@ Card* HashTable::searchItem(int key, string name)
         {
           return temp;
         }
-        
+
         temp = temp -> next;
     }
 

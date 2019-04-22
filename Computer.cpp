@@ -337,15 +337,16 @@ string Computer::FinalAccusation()
 Card* Computer::RevealCard(string weapon, string suspect, string room)
 {
   Card* cards[3];
+  vector<Card*> notNull;
   cards[0] = aTable -> searchItem(0, weapon);
   cards[1] = aTable -> searchItem(6, suspect);
   cards[2] = aTable -> searchItem(12, room);
 
-  vector<Card*> notNull;
   for(int i = 0; i < 3; i++)
   {
     if(cards[i] != NULL)
     {
+      cout << "There are no cards to dispute the player's suggestion." << endl;
       notNull.push_back(cards[i]);
     }
   }

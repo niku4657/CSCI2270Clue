@@ -96,23 +96,28 @@ void ClueCard::shuffleCards()
     int r = rand() % 5;
     envelope -> insertItem(room[r].key, room[r].name);
     deleteElement(room, room[r].key, 6);
-  
+
     // delete card at index from array
     shuffleArray(weapon);
     shuffleArray(suspect);
     shuffleArray(room);
 }
 
-void ClueCard::mergeArrays(){
-  for (int i = 0; i < 15; i++){
-    if (i < 5){
+void ClueCard::mergeArrays()
+{
+  for (int i = 0; i < 15; i++)
+  {
+    if (i < 5)
+    {
       allCards[i] = weapon[i];
     }
-    else if(i >= 5 && i < 10){
+    else if(i >= 5 && i < 10)
+    {
       allCards[i] = suspect[i - 5];
     }
-    else if(i >= 10 && i < 15){
-      allCards[i] = room[i-10];
+    else if(i >= 10 && i < 15)
+    {
+      allCards[i] = room[i - 10];
     }
   }
 }

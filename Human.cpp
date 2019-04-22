@@ -130,20 +130,19 @@ string Human::Suggest(int roll)
 
     cout << "Suspect: ";
     getline(cin, suspect);
-    cout << endl;
 
     cout << "Weapon: ";
     getline(cin, weapon);
     cout << endl;
 
-    string suggestResult = "Suggest: " + weapon + ", " + suspect + ", " + room;
+    string suggestResult = "Suggest," + weapon + "," + suspect + "," + room;
 
     return suggestResult;
   }
   else
   {
-    cout << "Your roll has not landed you in a room, so it is now the next player's turn." << endl;
-    return "Suggest: Done";
+    cout << "Your roll has not landed you in a room, so it is now the next player's turn." << endl << endl;
+    return "Suggest,Done";
   }
 }
 
@@ -172,7 +171,7 @@ string Human::FinalAccusation()
   getline(cin, room);
   cout << endl;
 
-  string finalResult = "Final Accusation: " + suspect + ", " + room + ", " + weapon;
+  string finalResult = "Final Accusation," + suspect + "," + room + "," + weapon;
 
   return finalResult;
 }

@@ -9,6 +9,9 @@
 #include "HashTable.hpp"
 #include "ClueCard.hpp"
 #include <Windows.h>
+/* srand, rand */
+#include <time.h>       /* time */
+
 
 
 #include<conio.h>
@@ -29,8 +32,8 @@ void Game::initializePlayersArray()
   players[0].name = "h1";
   players[0].type = "Human";
 
-  players[1].name = "c1";
-  players[1].type = "Computer";
+  players[1].name = "h2";
+  players[1].type = "Human";
 
   players[2].name = "h3";
   players[2].type = "Human";
@@ -40,19 +43,20 @@ void Game::distributeCards()
 {
   cc.mergeArrays();
   Card* card = new Card;
-  for(int i = 0; i < 15; i=i + 3)
+
+  for(int i = 0; i < 15; i = i + 3)
   {
     card = &(cc.allCards[i]);
     players[0].addCard(card -> key, card -> name);
   }
 
-  for (int i = 1; i < 15;i= i + 3)
+  for (int i = 1; i < 15; i = i + 3)
   {
     card = &(cc.allCards[i]);
     players[1].addCard(card -> key, card -> name);
   }
 
-  for(int i = 2; i < 15;i= i + 3)
+  for(int i = 2; i < 15; i = i + 3)
   {
     card = &(cc.allCards[i]);
     players[2].addCard(card -> key, card -> name);
@@ -90,6 +94,7 @@ int split(string str, char c, string array[], int size)
 
 void Game::startGame()
 {
+  srand (time(NULL));
   //Game Setup
   bool isRunning = true;
   string arr[4];
@@ -133,15 +138,20 @@ void Game::startGame()
     if(turnOut.find(gameSuggest) != string::npos) //npos means greatest length of string
     {
       //Suggestion
-      if(turnOut != "Suggest: Done")
+      if(turnOut != "Suggest,Done")
       {
+        cout<<turnOut<<endl;
         split(turnOut, ',', arr, 4);
         vector<Card*> reveal;
-
         for(int i = 0; i < 3; i++)
         {
           if(i != currTurn)
           {
+            cout<<"******"<<arr[1]<<endl;
+
+              cout<<"****"<<arr[2]<<endl;
+
+                cout<<"***"<<arr[3]<<endl;
             Card* c = players[i].RevealCard(arr[1], arr[2], arr[3]);
             if(c != NULL)
             {
@@ -195,7 +205,7 @@ void Game::startGame()
     //Sleep Time
     Sleep(5000);
     //Clear The Screen
-    system("cls");
+    //system("cls");
   }
 
   cout << "The game is over!" << endl;
