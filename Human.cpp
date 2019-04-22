@@ -8,6 +8,37 @@ Human::Human()
   //Leave empty.
 }
 
+void showAllCards(){
+
+  cout << "Here are all the possible details to the mystery:" << endl << endl;
+  cout << "Weapons:" << endl;
+  cout << "_________" << endl;
+  cout << "C4C Food" << endl;
+  cout << "Ralphie's Horn" << endl;
+  cout << "CSCI 2270 Midterm 2" << endl;
+  cout << "Dean's List" << endl;
+  cout << "Flu from the Dorms" << endl;
+  cout << "Freshmen Ego" << endl << endl;
+
+  cout << "Suspects:" << endl;
+  cout << "_________" << endl;
+  cout << "Ralphie" << endl;
+  cout << "Chip the Buffalo" << endl;
+  cout << "Mr. Gold" << endl;
+  cout << "Ms. Black" << endl;
+  cout << "Prashil" << endl;
+  cout << "Tanvi" << endl << endl;
+
+  cout << "Rooms:" << endl;
+  cout << "_________" << endl;
+  cout << "UMC" << endl;
+  cout << "Farrand Field" << endl;
+  cout << "CSEL" << endl;
+  cout << "Kittredge" << endl;
+  cout << "Folsom Field" << endl;
+  cout << "C4C" << endl << endl;
+}
+
 string Human::ChooseTurn()
 {
   string option;
@@ -15,9 +46,11 @@ string Human::ChooseTurn()
   string quitTurn;
   string quitGame;
 
+  cout << "You will now roll the dice." << endl;
   int roll = Dice();
   cout << "You rolled a " << roll << "!" << endl << endl;
-  cout << "Here are your current cards: " << endl << endl;
+
+  showAllCards();
 
   printCards();
 
@@ -26,10 +59,11 @@ string Human::ChooseTurn()
   cout << "1. Suggest" << endl;
   cout << "2. Final Accusation" << endl;
   cout << "3. Quit Turn" << endl;
-  cout << "4. Quit Game" << endl;
+  cout << "4. Quit Game" << endl << endl;
 
   cout << "Pick one of the options above." << endl;
   getline(cin, option);
+  cout << endl;
 
   if (option == "1")
   {
@@ -62,11 +96,11 @@ int Human::Dice()
 
 void Human::printCards()
 {
-  cout << "YOUR CARDS" << endl << endl;
+  cout << "YOUR CARDS:" << endl << endl;
   cout << "* Reference these cards to make future suggestions";
   cout << " about what evidence is eliminated and which could be solution to the mystery *" << endl << endl;
   aTable -> printTable();
-  cout << "REVEALED CARDS" << endl << endl;
+  cout << "REVEALED CARDS:" << endl << endl;
   pTable -> printTable();
 }
 
@@ -84,14 +118,14 @@ string Human::Suggest(int roll)
     cout << "CSEL" << endl;
     cout << "Kittredge" << endl;
     cout << "Folsom Field" << endl;
-    cout << "C4C" << endl;
+    cout << "C4C" << endl << endl;
 
     getline(cin, room);
 
-    cout << "You have made it into the " << room << "." << endl;
+    cout << "You have made it into " << room << "." << endl << endl;
     cout << "You can now make a suggestion of who you think committed the murder" << endl;
 
-    cout << "Your Suggestion:" << endl;
+    cout << "Your Suggestion:" << endl << endl;
     cout << "Room: " << room << endl;
 
     cout << "Suspect: ";
@@ -108,9 +142,8 @@ string Human::Suggest(int roll)
   }
   else
   {
-    cout << "Your roll has not landed you in a room, so it is now the computer's turn.";
-    cout << endl;
-    return "";
+    cout << "Your roll has not landed you in a room, so it is now the next player's turn." << endl;
+    return "Suggest: Done";
   }
 }
 
@@ -147,11 +180,12 @@ string Human::FinalAccusation()
 Card* Human::RevealCard(string weapon, string suspect, string room)
 {
   Card* cards[3];
+  vector<Card*> notNull;
+
   cards[0] = aTable -> searchItem(0, weapon);
   cards[1] = aTable -> searchItem(6, suspect);
   cards[2] = aTable -> searchItem(12, room);
 
-  vector<Card*> notNull;
   for(int i = 0; i < 3; i++)
   {
     if(cards[i] != NULL)
@@ -162,10 +196,11 @@ Card* Human::RevealCard(string weapon, string suspect, string room)
 
 	if(notNull.size() == 0)
 	{
-		cout << "You have no cards to dispute the computer's suggestion." << endl;
+		cout << "There are no cards to dispute the player's suggestion." << endl;
     return NULL;
   }
-  cout << "Please choose a card to dispute the computer's suggestion:" << endl;
+
+  cout << "Please choose a card to dispute the player's suggestion:" << endl;
 
   for(int i = 0; i < notNull.size(); i++)
   {

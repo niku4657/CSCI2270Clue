@@ -123,13 +123,13 @@ string Computer::Suggest(int roll)
 
   if (roll == 1 || roll == 3 || roll == 5)
   {
-    cout << "The computer will now choose a room to go into." << endl;
+    cout << "The computer will now choose one of the following rooms to go into:" << endl << endl;
     cout << "UMC" << endl;
     cout << "Farrand Field" << endl;
     cout << "CSEL" << endl;
     cout << "Kittredge" << endl;
     cout << "Folsom Field" << endl;
-    cout << "C4C" << endl;
+    cout << "C4C" << endl << endl;
 
     computerDice = rand() % 6 + 1;
 
@@ -160,15 +160,15 @@ string Computer::Suggest(int roll)
       break;
     }
 
-    cout << "The computer has made it into the " << room << endl;
-    cout << "The computer will now make a suggestion as to who it thinks committed the murder" << endl;
+    cout << "The computer has made it into the " << room << "!" << endl << endl;
+    cout << "The computer will now make a suggestion as to who it thinks committed the murder." << endl << endl;
 
-    cout << "Computer's Suggestion:" << endl;
+    cout << "Computer's Suggestion:" << endl << endl;
     cout << "Room: " << room << endl;
     suspect = suspectHelper();
     cout << "Suspect: " << suspect << endl;
     weapon = weaponHelper();
-    cout << "Weapon: " << weapon << endl;
+    cout << "Weapon: " << weapon << endl << endl;
 
     string compSuggest = "Suggest: " + weapon + ", " + suspect + ", " + room;
 
@@ -315,8 +315,8 @@ string Computer::FinalAccusation()
   string suspect;
   string room;
 
-  cout << "The computer has made it into the " << room << "." << endl;
-  cout << "The computer will now make a final accusation as to who it thinks committed the murder." << endl;
+  cout << "The computer has made it into the " << room << "." << endl << endl;
+  cout << "The computer will now make a final accusation as to who it thinks committed the murder." << endl << endl;
 
   weapon = weaponFinalHelper();
 
@@ -324,10 +324,10 @@ string Computer::FinalAccusation()
 
   room = roomFinalHelper();
 
-  cout << "Computer's Final Accusation:" << endl;
+  cout << "Computer's Final Accusation:" << endl << endl;
   cout << "Weapon: " << weapon << endl;
   cout << "Suspect: " << suspect << endl;
-  cout << "Room: " << room << endl;
+  cout << "Room: " << room << endl << endl;
 
   string compFinal = "Final Accusation: " + weapon + ", " + suspect + ", " + room;
 

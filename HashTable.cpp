@@ -60,15 +60,15 @@ void HashTable::printTable()
     {
       if(i == 0)
       {
-        cout << "Weapons" <<": " << endl;
+        cout << "Weapons: " << endl;
       }
-      else if(i == 2)
+      else if(i == 1)
       {
-        cout << "Suspects" <<": " << endl;;
+        cout << "Suspects: " << endl;;
       }
       else
       {
-        cout << "Rooms" <<": " << endl;
+        cout << "Rooms: " << endl;
       }
 
       Card* temp;
@@ -89,6 +89,7 @@ void HashTable::printTable()
 //function to search
 Card* HashTable::searchItem(int key, string name)
 {
+
     //Compute the index by using the hash function
     int index = hashFunction(key);
 
@@ -97,7 +98,11 @@ Card* HashTable::searchItem(int key, string name)
 
     while (temp != NULL)
     {
-        if (temp -> name == name) return temp;
+        if (temp -> name == name)
+        {
+          return temp;
+        }
+        
         temp = temp -> next;
     }
 

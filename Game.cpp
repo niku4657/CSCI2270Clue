@@ -29,8 +29,8 @@ void Game::initializePlayersArray()
   players[0].name = "h1";
   players[0].type = "Human";
 
-  players[1].name = "h2";
-  players[1].type = "Human";
+  players[1].name = "c1";
+  players[1].type = "Computer";
 
   players[2].name = "h3";
   players[2].type = "Human";
@@ -111,17 +111,18 @@ void Game::startGame()
   distributeCards();
 
   //Game Start
-  cout << "                  Welcome to the Game of Clue!" << endl;
-  cout << "---------------------------------------------------------------" << endl;
-  cout << "Somewhere on the vast campus of University of Colorado Boulder, a horrible crime was committed." << endl;
-  cout << "The suspects of this crime could be anyone, anywhere, or anything." << endl;
-  cout << "It's your job to journey through the campus and use clues to determine which suspects";
-  cout << " are eliminated and which are the potential criminals." << endl;
-  cout << "By playing against the computer, you will solve this murder mystery by making suggestions along";
-  cout << " the way to help your elimination, and make a final accusation if you think you have uncovered the culprit." << endl;
-  cout << "                  It's time to start the game... " << endl;
-  cout << "---------------------------------------------------------------" << endl;
-  cout << "         Good Luck, and may the best detective win!" << endl;
+  cout << "                               Welcome to the Game of Clue!" << endl;
+  cout << "--------------------------------------------------------------------------------------------------" << endl;
+  cout << " Somewhere on the vast campus of University of Colorado Boulder, a horrible crime was committed." << endl << endl;
+  cout << "         The suspects of this crime could be anyone, anywhere, or anything." << endl << endl;
+  cout << "     It's your job to journey through the campus and use clues to determine which suspects" << endl;
+  cout << "                  are eliminated and which are the potential criminals." << endl << endl;
+  cout << "             By playing against the computer, you will solve this murder mystery" << endl;
+  cout << "             by making suggestions along the way to help your elimination, and make" << endl;
+  cout << "                  a final accusation if you think you have uncovered the culprit." << endl << endl;
+  cout << "                               It's time to start the game... " << endl;
+  cout << "--------------------------------------------------------------------------------------------------" << endl;
+  cout << "                        Good Luck, and may the best detective win!" << endl;
 
   while(isRunning)
   {
@@ -132,23 +133,27 @@ void Game::startGame()
     if(turnOut.find(gameSuggest) != string::npos) //npos means greatest length of string
     {
       //Suggestion
-      split(turnOut, ',', arr, 4);
-      vector<Card*> reveal;
-      for(int i = 0; i < 3; i++)
+      if(turnOut != "Suggest: Done")
       {
-        if(i != currTurn)
+        split(turnOut, ',', arr, 4);
+        vector<Card*> reveal;
+
+        for(int i = 0; i < 3; i++)
         {
-          Card* c = players[i].RevealCard(arr[1], arr[2], arr[3]);
-          if(c != NULL)
+          if(i != currTurn)
           {
-            reveal.push_back(c);
+            Card* c = players[i].RevealCard(arr[1], arr[2], arr[3]);
+            if(c != NULL)
+            {
+              reveal.push_back(c);
+            }
           }
         }
-      }
 
-      for(int i = 0; i < reveal.size(); i++)
-      {
-        players[i].addCardToP(reveal[i]->key, reveal[i]->name);
+        for(int i = 0; i < reveal.size(); i++)
+        {
+          players[i].addCardToP(reveal[i] -> key, reveal[i] -> name);
+        }
       }
 
       //Switch Players
@@ -177,6 +182,7 @@ void Game::startGame()
     else if(turnOut == "Quit Turn")
     {
       //Quit Turn
+      cout << "The turn was forfeited." << endl;
       currTurn++;
     }
     else if(turnOut == "Quit Game")
@@ -187,7 +193,7 @@ void Game::startGame()
     }
 
     //Sleep Time
-    Sleep(1000);
+    Sleep(5000);
     //Clear The Screen
     system("cls");
   }

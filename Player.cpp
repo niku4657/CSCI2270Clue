@@ -7,9 +7,6 @@ Player::Player()
   //Leave empty.
 }
 
-Card* searchACard(int key, string name){
-
-}
 void Player::addCard(int key, string name)
 {
   if(type == "Human")
