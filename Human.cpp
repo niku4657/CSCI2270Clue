@@ -77,7 +77,7 @@ string Human::ChooseTurn()
   }
   else if (option == "3")
   {
-    cout << "You have chosen to quit your turn. The computer will now proceed with their turn." << endl;
+    cout << "You have chosen to quit your turn. The next player will now proceed with their turn." << endl;
     quitTurn = "Quit Turn";
     return quitTurn;
   }
