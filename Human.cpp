@@ -203,7 +203,7 @@ Card* Human::RevealCard(string weapon, string suspect, string room)
 
   for(int i = 0; i < notNull.size(); i++)
   {
-    cout << notNull[i] -> name << endl;
+    cout << notNull[i] -> name << endl << endl;
   }
 
   string card;

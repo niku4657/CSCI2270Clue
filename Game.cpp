@@ -105,6 +105,8 @@ void Game::startGame()
   Card *c2;
   int currTurn = 0;
   int numOfPlayers = 3;
+  vector<Card*> reveal;
+  string winner = "";
 
   initializePlayersArray();
   cc.fillInWeapons();
@@ -140,18 +142,16 @@ void Game::startGame()
       //Suggestion
       if(turnOut != "Suggest,Done")
       {
-        cout<<turnOut<<endl;
         split(turnOut, ',', arr, 4);
-        vector<Card*> reveal;
+
         for(int i = 0; i < 3; i++)
         {
           if(i != currTurn)
           {
-            cout<<"******"<<arr[1]<<endl;
+            cout << "Turn the screen to player " << players[i].name << endl << endl;
+            Sleep(5000);
+            system("cls");
 
-              cout<<"****"<<arr[2]<<endl;
-
-                cout<<"***"<<arr[3]<<endl;
             Card* c = players[i].RevealCard(arr[1], arr[2], arr[3]);
             if(c != NULL)
             {
@@ -162,7 +162,7 @@ void Game::startGame()
 
         for(int i = 0; i < reveal.size(); i++)
         {
-          players[i].addCardToP(reveal[i] -> key, reveal[i] -> name);
+          players[currTurn].addCardToP(reveal[i] -> key, reveal[i] -> name);
         }
       }
 
@@ -174,13 +174,14 @@ void Game::startGame()
       //Final Accusation
       split(turnOut, ',', arr, 4);
 
-      if(cc.checkEnvelope(arr[1], arr[2], arr[3]))
+      if(cc.checkEnvelope(arr[1], arr[2], arr[3]) ==  true)
       {
-        cout << "Congratulations, you have successfully solved the mystery! Great job detective!" << endl;
+        cout << "Congratulations, you have successfully solved the mystery! Great job detective!" << endl << endl;
+        winner = players[currTurn].name;
       }
       else
       {
-        cout << "Sorry! You have not accurately uncovered the suspects of this mystery. Better luck next time!" << endl;
+        cout << "Sorry! You have not accurately uncovered the suspects of this mystery. Better luck next time!" << endl << endl;
       }
 
       cout << "The correct details to this mystery were: " << endl;
@@ -192,20 +193,25 @@ void Game::startGame()
     else if(turnOut == "Quit Turn")
     {
       //Quit Turn
-      cout << "The turn was forfeited." << endl;
+      cout << "The turn was forfeited." << endl << endl;
       currTurn++;
     }
     else if(turnOut == "Quit Game")
     {
       //Quit Game
-      cout << "You have quit the game." << endl;
+      cout << "You have quit the game." << endl << endl;
       isRunning = false;
     }
 
     //Sleep Time
     Sleep(5000);
     //Clear The Screen
-    //system("cls");
+    system("cls");
+  }
+
+  if(winner != "")
+  {
+    cout << "The winner is " << winner << endl << endl;
   }
 
   cout << "The game is over!" << endl;

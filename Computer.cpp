@@ -170,7 +170,7 @@ string Computer::Suggest(int roll)
     weapon = weaponHelper();
     cout << "Weapon: " << weapon << endl << endl;
 
-    string compSuggest = "Suggest: " + weapon + ", " + suspect + ", " + room;
+    string compSuggest = "Suggest," + weapon + "," + suspect + "," + room;
 
     return compSuggest;
   }
@@ -329,7 +329,7 @@ string Computer::FinalAccusation()
   cout << "Suspect: " << suspect << endl;
   cout << "Room: " << room << endl << endl;
 
-  string compFinal = "Final Accusation: " + weapon + ", " + suspect + ", " + room;
+  string compFinal = "Final Accusation," + weapon + "," + suspect + "," + room;
 
   return compFinal;
 }

@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 #include "HashTable.hpp"
 #include "ClueCard.hpp"
 using namespace std;
@@ -124,17 +125,27 @@ void ClueCard::mergeArrays()
 
 bool ClueCard::checkEnvelope(string weapon, string suspect, string room)
 {
-	Card *w = envelope -> searchItem(0, weapon);
-	Card *s = envelope -> searchItem(6, suspect);
-	Card *r = envelope -> searchItem(12, room);
+  Card* cards[3];
+  vector<Card*> notNull;
 
-	if(w == NULL || s == NULL || r == NULL)
-	{
-		return false;
-	}
+  cards[0] = envelope -> table[0];
+  cards[1] = envelope -> table[1];
+  cards[2] = envelope -> table[2];
 
-	if(w != NULL && s != NULL && r != NULL)
+  for(int i = 0; i < 3; i++)
+  {
+    if(cards[i] -> name == weapon || cards[i] -> name == suspect || cards[i] -> name == room)
+    {
+      notNull.push_back(cards[i]);
+    }
+  }
+
+	if(notNull.size() == 3)
 	{
-		return true;
-	}
+    return true;
+  }
+  else
+  {
+    return false;
+  }
 }

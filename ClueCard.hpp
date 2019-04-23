@@ -2,6 +2,7 @@
 #define CLUECARD_HPP
 #include <iostream>
 #include <string>
+#include <vector>
 #include "HashTable.hpp"
 using namespace std;
 
